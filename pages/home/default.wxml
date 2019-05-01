@@ -1,0 +1,48 @@
+<!--pages/demo01/default.wxml-->
+<view class="weui-search-bar">
+   <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" bindfocus='isFocus'/>
+      <!-- <view class="weui-icon-clear" wx:if="{{wxSearchData.value.length > 0}}" bindtap="wxSearchClear">
+        <icon type="clear" size="14"></icon>
+      </view> -->
+    </view>
+  </view>
+    <!-- <view class="weui-search-bar__cancel-btn" bindtap="wxSearchConfirm">
+         <text wx:if="{{wxSearchData.value.length>0}}" data-key='search'>搜索</text>
+         <text wx:else data-key='back'>返回</text>
+    </view> -->
+</view>
+<swiper indicator-dots="true"	indicator-color="white"	indicator-active-color="black" autoplay="true" interval="2000" circular="true">
+  <swiper-item bindtap='toDetail1'>
+    <!-- <image src="../../images/other/iphone_x.jpg"></image> -->
+  </swiper-item>
+  <swiper-item bindtap='toDetail2'>
+    <!-- <image src="../../images/other/s10.jpg"></image> -->
+  </swiper-item>
+  <swiper-item>
+    <view class='content'>
+      <view class='today'>
+        <view class='info'>
+          <view class='temp'>{{weather.temperature.data}}℃</view>
+          <view class='weather'>{{weather.weather.data}} {{weather.winddirection.data}} {{weather.windpower.data}}</view>
+          <view class='city'>{{weather.city.data}}</view>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>
+<view class='home'>
+  <navigator url="../lost/newLost">
+    <view class='banner banner1'>
+      <text class="a">丢失物品</text>
+    </view>
+  </navigator>
+  <navigator url="../pick/newPick">
+    <view class='banner banner2'>
+      <text class='a'>捡到物品</text>
+    </view>
+  </navigator>
+</view>
+

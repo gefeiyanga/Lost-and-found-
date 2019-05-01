@@ -1,0 +1,14 @@
+/* pages/return/return.wxss */
+text{
+  margin: 50rpx 50rpx;
+}
+input{
+  width: 600rpx;
+  border: 2rpx solid #000;
+  margin: 30rpx auto;
+  border-radius:6rpx; 
+}
+button{
+  margin-top:80rpx;
+  width: 80%;
+}

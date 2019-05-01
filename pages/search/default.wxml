@@ -1,0 +1,4 @@
+<!--pages/search/default.wxml-->
+<!-- <text>pages/search/default.wxml</text> -->
+<!-- 导入搜索框组件的结构 -->
+<include src="../../wxSearchView/wxSearchView.wxml" />

@@ -1,0 +1,14 @@
+/* pages/mine/default.wxss */
+page{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.mineWhat{
+    position: relative;
+    padding-left:20rpx;
+    width:100%;
+    height:120rpx;
+    border-bottom: 1px solid #dedede;
+    line-height: 120rpx;
+}

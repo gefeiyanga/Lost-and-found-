@@ -1,0 +1,41 @@
+/* pages/pick/newLost.wxss */
+.title-t,.detail-t{
+  width: 100%; background: #FCFCFC; border-top: 2rpx #ECECEC solid; padding:10rpx 10rpx; font-size: 20px; color: #408bfd;
+}
+.title{
+  padding: 20rpx;
+}
+.detail{
+  padding: 20rpx;
+  margin-left: 40rpx;
+}
+.btn{
+  margin-left:550rpx; 
+  font-size: 32rpx;
+  color:white ;
+  width: 140rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  background:linear-gradient(to bottom,#408bfd,#1c72f3)
+  
+  ;
+}
+/* 获取当前位置 */
+.getGps{
+  width: 92%; background: #FCFCFC; border-top: 2rpx #ECECEC solid; padding:3% 4%; font-size: 14px; color: #999;   margin-top: 30rpx;
+}
+.getGps label{
+  margin-right: 20rpx;
+}
+image.mapIco{
+  width: 3%;
+  margin-right: 15rpx
+}
+form image.picSrc{
+  padding: 10rpx;
+  width: 200rpx;
+  height:200rpx;
+}
+.pic{
+  margin: 40rpx;
+}

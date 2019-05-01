@@ -1,0 +1,24 @@
+<!--pages/template/list-template.wxml-->
+<!-- <text>pages/template/list-template.wxml</text> -->
+<template name="listTemp">
+<view class='tempContainer'>
+  <view class='avatar_date'>
+    <image src="{{avatar}}"></image>
+    <text>{{uname}}</text>
+    <text class='date'>{{date}}</text>
+  </view>
+  <text class="title">{{title}}</text>
+  <view class='content'>
+    <text class='detail'>{{detail}}</text>
+  </view>
+  <view class='v-img'>
+    <image class='detailImg' src="http://localhost/gfy/server/upload/{{pic}}"></image> 
+  </view>
+  <!-- <view class="love_attention">
+      <image src="{{detail_love_image1}}"></image>
+      <text>{{love_count}}</text>
+      <image src="{{detail_love_image2}}"></image>
+      <text>{{attention_count}}</text>
+  </view> -->
+</view>
+</template>

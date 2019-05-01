@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/lost/newLost",
+    "pages/return/return",
+    "pages/l-phone-list/phone-list",
+    "pages/home/default",
+    "pages/l-classify/default",
+    "pages/p-classify/default",
+    "pages/mine/default",
+    "pages/logs/logs",
+    "pages/search/default",
+    "pages/pick/newPick",
+    "pages/l-udisk-list/udisk-list"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f5f5f5",
+    "navigationBarTitleText": "失物招领",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/tabBar/default_selected.png",
+        "iconPath": "images/tabBar/default.png",
+        "pagePath": "pages/home/default",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/tabBar/classify_selected.png",
+        "iconPath": "images/tabBar/classify.png",
+        "pagePath": "pages/l-classify/default",
+        "text": "失物分类"
+      },
+      {
+        "selectedIconPath": "images/tabBar/classify_selected.png",
+        "iconPath": "images/tabBar/classify.png",
+        "pagePath": "pages/p-classify/default",
+        "text": "拾物分类"
+      },
+      {
+        "selectedIconPath": "images/tabBar/mine_selected.png",
+        "iconPath": "images/tabBar/mine.png",
+        "pagePath": "pages/mine/default",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

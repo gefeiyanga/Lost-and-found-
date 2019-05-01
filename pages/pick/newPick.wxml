@@ -1,0 +1,20 @@
+<!--pages/pick/newPick.wxml-->
+<!-- <text>pages/pick/newPick.wxml</text> -->
+<form action="">
+    <view class='title-t'>标题：</view>  
+    <input type="text" class="title" placeholder="给它取个标题吧"></input>
+    <view class='detail-t'>详细信息：</view>
+    <textarea class='detail' cols="30" rows="10" placeholder="请尽可能详细描述该物品">
+    </textarea>
+    <view class='title-t'>姓名：</view>  
+    <input type="text" class="title"></input>
+    <view class='title-t'>联系方式：</view>  
+    <input type="text" class="title"></input>
+    <!-- <view class='getGps' bindtap="clearGps">
+        <image src="../../images/lost/map.png" class="mapIco" mode="widthFix"></image>
+        <label>当前位置</label><text>{{address}}</text>
+    </view> -->
+    <image class='picSrc' src="{{source}}"></image>
+    <button class='pic' bindtap='getPic'>上传图片</button>
+    <button class='btn'>发布</button>
+</form>
