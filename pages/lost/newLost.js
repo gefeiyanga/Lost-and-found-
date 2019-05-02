@@ -83,7 +83,67 @@ Page({
       this.setData({
         tab: 'l_earphone'
       })
-    }
+    } else if (val.search("上衣") != -1) {
+      this.setData({
+        tab: 'l_shirt'
+      })
+    } else if (val.search("裤") != -1) {
+      this.setData({
+        tab: 'l_trousers'
+      })
+    } else if (val.search("帽") != -1) {
+      this.setData({
+        tab: 'l_cap'
+      })
+    } else if (val.search("笔盒") != -1) {
+      this.setData({
+        tab: 'l_penbox'
+      })
+    } else if (val.search("报告") != -1) {
+      this.setData({
+        tab: 'l_report'
+      })
+    } else if (val.search("书本") != -1) {
+      this.setData({
+        tab: 'l_book'
+      })
+    }  else if (val.search("篮球") != -1) {
+      this.setData({
+        tab: 'l_basketball'
+      })
+    } else if (val.search("足球") != -1) {
+      this.setData({
+        tab: 'l_football'
+      })
+    } else if (val.search("羽毛球") != -1) {
+      this.setData({
+        tab: 'l_badminton'
+      })
+    } else if (val.search("乒乓球") != -1) {
+      this.setData({
+        tab: 'l_pingpong'
+      })
+    } else if (val.search("手表") != -1) {
+      this.setData({
+        tab: 'l_watch'
+      })
+    } else if (val.search("学生证") != -1) {
+      this.setData({
+        tab: 'l_stuidcard'
+      })
+    } else if (val.search("饭卡") != -1) {
+      this.setData({
+        tab: 'l_mealcard'
+      })
+    } else if (val.search("身份证") != -1) {
+      this.setData({
+        tab: 'l_idcard'
+      })
+    } else{
+      this.setData({
+        tab: 'l_other'
+      })
+    } 
     this.setData({
       title: val
     });

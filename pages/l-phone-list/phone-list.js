@@ -32,7 +32,7 @@ Page({
     let index=e.currentTarget.dataset.index
     console.log(index)
     wx.navigateTo({
-      url: '../../pages/detail/detail?index='+index,
+      url: '../../pages/l-phone-detail/phone-detail?index='+index,
     })
   },
   /**

@@ -1,0 +1,29 @@
+<!--pages/detail/detail.wxml-->
+<view class='tempContainer'>
+  <view class='avatar_date'>
+    <image src="{{detailObj.avatar}}"></image>
+    <text style='font-weight:blod'>{{detailObj.uname}}</text>
+    <text style='magin:10rpx;font-size:12px'>发布于</text>
+    <text style='font-size:12px'>{{detailObj.date}}</text>
+  </view>
+  <!-- <view class="detail_collection_share">
+    <view class="col_share_img">
+      <image catchtap="handleCollection" src="{{isCollected?'../../images/detail/collection.png': '/images/detail/collection-anti.png'}}"></image>
+      <image catchtap="handleShare" src="../../images/detail/share.png"></image>
+    </view>
+    <view class="line"></view>
+  </view> -->
+  <text class="title">{{detailObj.title}}</text>
+  <view class='content'>
+    <view><text class='detail'>{{detailObj.detail}}</text></view>
+    <view><text class="name">姓名：{{detailObj.name}}</text></view>
+    <view><text class="tele">联系方式：{{detailObj.tele}}</text></view>
+  </view>
+  <view class='v-img'>
+    <image class='detailImg' src="http://localhost/gfy/server/upload/{{detailObj.pic}}"></image> 
+  </view>
+  <view class="review">
+    <button>归还物品</button>
+  </view>
+</view>
+

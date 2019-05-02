@@ -7,8 +7,10 @@
     <view class="nav_left_items {{index==3?'actived':''}}" bindtap="switchRightTab" data-index="3">文具</view>
     <view class="nav_left_items {{index==4?'actived':''}}" bindtap="switchRightTab" data-index="4">体育</view>
     <view class="nav_left_items {{index==5?'actived':''}}" bindtap="switchRightTab" data-index="5">配饰</view>
-    <view class="nav_left_items {{index==6?'actived':''}}" bindtap="switchRightTab" data-index="6">其他</view>
+    <view class="nav_left_items {{index==6?'actived':''}}" bindtap="switchRightTab" data-index="6">证件</view>
+    <view class="nav_left_items {{index==7?'actived':''}}" bindtap="switchRightTab" data-index="7">其他</view>
   </view>
+    
   <view class="nav_right">
     <view wx:if="{{index==1}}">
       <navigator open-type='navigate' url="../l-phone-list/phone-list" class="nav_right_items">
@@ -19,103 +21,89 @@
         <image src="../../images/classfiy/elecProd/u-disk.png"></image>
         <text>U盘</text>
       </navigator>
-      <view class="nav_right_items">
+      <navigator open-type='navigate' url="../l-pc-list/pc-list" class="nav_right_items">
         <image src="../../images/classfiy/elecProd/laptop.png"></image>
         <text>电脑</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-pad-list/pad-list" class="nav_right_items">
         <image src="../../images/classfiy/elecProd/pad.png"></image>
         <text>平板</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-earphone-list/earphone-list" class="nav_right_items">
         <image src="../../images/classfiy/elecProd/earphone.png"></image>
         <text>耳机</text>
-      </view>
+      </navigator>
     </view>
     <view wx:if="{{index==2}}">
-      <view class="nav_right_items">
+      <navigator open-type='navigate' url="../l-shirt-list/shirt-list" class="nav_right_items">
         <image src="../../images/classfiy/cloth/t-shit.png"></image>
         <text>上衣</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-trousers-list/trousers-list" class="nav_right_items">
         <image src="../../images/classfiy/cloth/trouser.png"></image>
         <text>裤子</text>
-      </view>
-      <view class="nav_right_items">
-        <image src="../../images/classfiy/cloth/coat.png"></image>
-        <text>外套</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-cap-list/cap-list" class="nav_right_items">
         <image src="../../images/classfiy/cloth/cap.png"></image>
         <text>帽子</text>
-      </view>
+      </navigator>
     </view>
     <view wx:if="{{index==3}}">
-      <view class="nav_right_items">
+      <navigator open-type='navigate' url="../l-penbox-list/penbox-list" class="nav_right_items">
         <image src="../../images/classfiy/stationery/qianbihe.png"></image>
         <text>笔盒</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-report-list/report-list" class="nav_right_items">
         <image src="../../images/classfiy/stationery/report.png"></image>
         <text>报告</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-book-list/book-list" class="nav_right_items">
         <image src="../../images/classfiy/stationery/book-1.png"></image>
-        <text>课本</text>
-      </view>
-      <view class="nav_right_items">
-        <image src="../../images/classfiy/stationery/book-2.png"></image>
-        <text>课外书</text>
-      </view>
+        <text>书本</text>
+      </navigator>
     </view>
     <view wx:if="{{index==4}}">
-      <view class="nav_right_items">
+      <navigator open-type='navigate' url="../l-basketball-list/basketball-list" class="nav_right_items">
         <image src="../../images/classfiy/sport/lanqiu.png"></image>
         <text>篮球</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-football-list/football-list" class="nav_right_items">
         <image src="../../images/classfiy/sport/zuqiu.png"></image>
         <text>足球</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-badminton-list/badminton-list" class="nav_right_items">
         <image src="../../images/classfiy/sport/yumaoqiu.png"></image>
         <text>羽毛球</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-pingpong-list/pingpong-list" class="nav_right_items">
         <image src="../../images/classfiy/sport/pingpangqiu.png"></image>
         <text>乒乓球</text>
-      </view>
+      </navigator>
     </view>
     <view wx:if="{{index==5}}">
-      <view class="nav_right_items">
+      <navigator open-type='navigate' url="../l-watch-list/watch-list" class="nav_right_items">
         <image src="../../images/classfiy/ornament/watch.png"></image>
         <text>手表</text>
-      </view>
-      <view class="nav_right_items">
-        <image src="../../images/classfiy/ornament/shoushi.png"></image>
-        <text>首饰</text>
-      </view>
+      </navigator>
     </view>
     <view wx:if="{{index==6}}">
-      <view class="nav_right_items">
+      <navigator open-type='navigate' url="../l-stuidcard-list/stuidcard-list" class="nav_right_items">
         <image src="../../images/classfiy/other/xueshengzheng.png"></image>
         <text>学生证</text>
-      </view>
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-mealcard-list/mealcard-list" class="nav_right_items">
         <image src="../../images/classfiy/other/fanka.png"></image>
         <text>饭卡</text>
-      </view>
-      <view class="nav_right_items">
-        <image src="../../images/classfiy/other/qiancai.png"></image>
-        <text>钱财</text> 
-      </view> 
-      <view class="nav_right_items">
+      </navigator>
+      <navigator open-type='navigate' url="../l-idcard-list/idcard-list" class="nav_right_items">
         <image src="../../images/classfiy/other/id.png"></image>
         <text>身份证</text>
-      </view>
-      <view class="nav_right_items">
-        <text>未知</text>
-      </view>
+      </navigator>
+    </view>
+    <view wx:if="{{index==7}}">
+      <navigator open-type='navigate' url="../l-other-list/other-list" class="nav_right_items">
+        <text>其他</text>
+      </navigator>
     </view>
   </view>
 </view>
