@@ -1,0 +1,87 @@
+/* pages/detail/detail.wxss */
+.tempContainer{
+  display: flex;
+  flex-direction: column;
+}
+.avatar_date {
+  margin:10rpx 0 20rpx 10rpx;
+}
+.avatar_date image {
+  width: 60rpx;
+  height:60rpx;
+  vertical-align: middle;
+}
+.avatar_date text {
+  font-size: 16px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.title{
+  font-size: 18px;
+  margin-left: 10rpx;
+  margin-bottom: 10rpx;
+  font-weight: bold;
+}
+.detail_collection_share{
+  position: relative;
+}
+.col_share_img {
+  float: right;
+  margin-right: 60rpx;
+}
+.col_share_img image {
+  width:90rpx;
+  height:90rpx;
+  margin-right:10rpx;
+}
+.line {
+  position: absolute;
+  top:45rpx;
+  left: 5%;
+  width:90%;
+  height:1px;
+  background: #eee;
+  z-index:-1;
+}
+.content view{
+  margin: 20rpx;
+}
+.detail,.name,.tele,.addr{
+  font-size: 16px;
+  margin:10rpx;
+}
+.v-img{
+  text-align: center;
+}
+.detailImg{
+  width: 98%;
+  border-radius: 12rpx;
+}
+.love_attention image {
+  width:32rpx;
+  height:32rpx;
+  vertical-align: middle;
+  margin-left:10rpx; 
+}
+.love_attention text {
+  font-size: 14px;
+  color: #666;
+  vertical-align: middle;
+  margin: 10rpx;
+}
+.review{
+  margin-bottom:600rpx; 
+}
+.review textarea{
+  margin-left:7rpx; 
+  width: 98%;
+  background: #ddd;
+}
+.review button{
+  width: 30%;
+  background-color: #408bfd;
+  margin-top: 40rpx;
+  margin-left: 450rpx;
+  color: white;
+  line-height: 60rpx;
+}

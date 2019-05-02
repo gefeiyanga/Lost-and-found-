@@ -1,20 +1,24 @@
-<!--pages/pick/newPick.wxml-->
-<!-- <text>pages/pick/newPick.wxml</text> -->
+<!--pages/pick/newLost.wxml-->
+<!-- <text>pages/pick/newLost.wxml</text> -->
 <form action="">
     <view class='title-t'>标题：</view>  
-    <input type="text" class="title" placeholder="给它取个标题吧"></input>
+    <input type="text" class="title" placeholder="给它取个标题吧" bindinput="getTitle"></input>
     <view class='detail-t'>详细信息：</view>
-    <textarea class='detail' cols="30" rows="10" placeholder="请尽可能详细描述该物品">
+    <textarea class='detail' cols="30" rows="10" placeholder="请尽可能详细描述该物品" bindinput="getDetail">
     </textarea>
     <view class='title-t'>姓名：</view>  
-    <input type="text" class="title"></input>
+    <input type="text" class="title" bindinput="getName"></input>
     <view class='title-t'>联系方式：</view>  
-    <input type="text" class="title"></input>
+    <input type="text" class="title" bindinput="getTele"></input>
     <!-- <view class='getGps' bindtap="clearGps">
         <image src="../../images/lost/map.png" class="mapIco" mode="widthFix"></image>
         <label>当前位置</label><text>{{address}}</text>
     </view> -->
-    <image class='picSrc' src="{{source}}"></image>
-    <button class='pic' bindtap='getPic'>上传图片</button>
-    <button class='btn'>发布</button>
+    <block wx:for='{{imgLists}}' wx:key="item">
+      <image class='picSrc' src="{{item}}"></image> 
+    </block>
+    <!-- <image class='picSrc' src="{{imgLists}}"></image>  -->
+    <button class='pic' bindtap='getPic'>选择图片</button>
+    <button class='pic' bindtap='uploadPic'>确认上传</button>
+    <button catchtap='release' class='btn'>发布</button>
 </form>
