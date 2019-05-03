@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/search/default",
     "pages/p-classify/default",
     "pages/l-classify/default",
     "pages/lost/newLost",
@@ -8,9 +9,7 @@
     "pages/home/default",
     "pages/mine/default",
     "pages/logs/logs",
-    "pages/search/default",
     "pages/pick/newPick",
-
     "pages/l-phone-list/phone-list",
     "pages/l-phone-detail/phone-detail",
     "pages/l-udisk-list/udisk-list",
@@ -51,7 +50,6 @@
     "pages/l-idcard-detail/idcard-detail",
     "pages/l-other-list/other-list",
     "pages/l-other-detail/other-detail",
-
     "pages/p-phone-list/phone-list",
     "pages/p-phone-detail/phone-detail",
     "pages/p-udisk-list/udisk-list",
@@ -91,7 +89,8 @@
     "pages/p-idcard-list/idcard-list",
     "pages/p-idcard-detail/idcard-detail",
     "pages/p-other-list/other-list",
-    "pages/p-other-detail/other-detail"
+    "pages/p-other-detail/other-detail",
+    "pages/searchListShow/default"
   ],
   "permission": {
     "scope.userLocation": {

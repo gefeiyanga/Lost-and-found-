@@ -10,7 +10,7 @@
   </view>
     <view class="weui-search-bar__cancel-btn" bindtap="wxSearchConfirm">
          <text wx:if="{{wxSearchData.value.length>0}}" data-key='search'>搜索</text>
-         <text wx:else data-key='back'>返回</text>
+         <!-- <text wx:else data-key='back'>返回</text> -->
      </view>
 </view>
 
@@ -20,7 +20,7 @@
     <!-- 搜索的提示部分 -->
     <view class="wxSearchMindKey">
       <view class="wxSearchMindKeyList">
-        <block wx:for="{{wxSearchData.tipKeys}}">
+        <block wx:for="{{wxSearchData.tipKeys}}" wx:key="{{item}}">
           <view class="wxSearchMindKeyItem" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</view>
         </block>
       </view>
@@ -33,7 +33,7 @@
         <icon type="clear" bindtap="wxSearchDeleteAll" size="18" />
       </view>
       <view class="wxSearchKeyList">
-        <block wx:for="{{wxSearchData.his}}">
+        <block wx:for="{{wxSearchData.his}}" wx:key="{{item}}">
           <view class="wxSearchKeyItem" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</view>
         </block>
       </view>
@@ -42,7 +42,7 @@
     <view class="wxSearchKey" style="display:{{wxSearchData.value.length>0 ? 'none':'block'}}">
       <text wx:if="{{wxSearchData.hotKeys[0]}}" class="wxSearchTitle">搜索热点</text>
       <view class="wxSearchKeyList">
-        <block wx:for="{{wxSearchData.hotKeys}}">
+        <block wx:for="{{wxSearchData.hotKeys}}" wx:key="{{item}}">
           <view class="wxSearchKeyItem" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</view>
         </block>
       </view>

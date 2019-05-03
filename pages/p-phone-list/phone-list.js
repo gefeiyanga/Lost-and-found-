@@ -6,6 +6,7 @@ Page({
    */
   data: {
     listArr:[],
+    // index:''
   },
 
   /**
@@ -22,7 +23,8 @@ Page({
       success:function(res){
         console.log(res.data);
         that.setData({
-          listArr: res.data
+          listArr: res.data,
+          // index:res.data.id
         })
       }
     });

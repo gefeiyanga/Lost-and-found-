@@ -1,0 +1,9 @@
+<import src="/pages/template/list-template.wxml" />
+<block wx:for='{{listArr}}' wx:key='{{index}}'>
+  <!-- <block wx:for='{{listArr[index]}}' wx:key='{{index}}'> -->
+    <view catchtap='toDetail' data-index='{{index}}'>
+      <template is="listTemp" data='{{...item}}'></template>
+    </view>
+  <!-- </block> -->
+</block>
+

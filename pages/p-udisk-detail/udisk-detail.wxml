@@ -23,7 +23,7 @@
     <image class='detailImg' src="http://localhost/gfy/server/upload/{{detailObj.pic}}"></image> 
   </view>
   <view class="review">
-    <button>归还物品</button>
+    <button>申请取回</button>
   </view>
 </view>
 

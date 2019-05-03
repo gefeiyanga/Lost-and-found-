@@ -7,7 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
@@ -19,6 +18,7 @@ Page({
     WxSearch.init(
       that,  // 本页面一个引用
       ['手机', 'U盘', "学生卡", "钱包", '实验报告', '书本'], // 热点搜索推荐，[]表示不使用
+      [],
       that.mySearchFunction, // 提供一个搜索回调函数
       that.myGobackFunction //提供一个返回回调函数
     );
@@ -35,18 +35,20 @@ Page({
     // do your job here
     // 示例：跳转
     wx.redirectTo({
-      url: '../index/index?searchValue=' + value
+      url: '../searchListShow/default?searchValue=' + value
+      // url: '../searchListShow/default?searchValue=' + value
     })
+    console.log(value);
   },
 
   //返回回调函数
-  myGobackFunction: function () {
-    // do your job here
-    // 示例：返回
-    wx.redirectTo({
-      url: '../index/index?searchValue=返回'
-    })
-  },
+  // myGobackFunction: function () {
+  //   // do your job here
+  //   // 示例：返回
+  //   wx.redirectTo({
+  //     url: '../home/default'
+  //   })
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
