@@ -222,8 +222,20 @@ Page({
       header:{'content-type':'application/json'},
       success:function(res){
         // console.log(res.data);
+        // console.log(typeof(res.data));  //对象
+        for (var key in res.data) {
+          //console.log(typeof(res.data[key]));  //对象
+          console.log(res.data[key].pic);
+          var pics = res.data[key].pic.split(".jpg");
+          for (var i = 0; i < pics.length; i++) {
+            pics[i] = pics[i] + '.jpg';
+          }
+          pics.pop();
+          res.data[key].pic = pics
+          console.log(pics);
+        }
         that.setData({
-          listArr: res.data
+          listArr: res.data.reverse()
         })
       }
     });

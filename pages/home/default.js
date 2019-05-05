@@ -12,6 +12,8 @@ Page({
    */
   data: {
     weather: [],
+    pic1: '',
+    pic2: '',
   },
 
   /**
@@ -19,6 +21,44 @@ Page({
    */
   onLoad: function () {
     this.loadInfo();
+    var that = this;
+    console.log(that);
+    wx.request({
+      url: 'http://127.0.0.1:3000/lLastest',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        console.log("1111"+res.data);
+        let pics = res.data.split(".jpg");
+        for (var i = 0; i < pics.length; i++) {
+          pics[i] = pics[i] + '.jpg';
+        }
+        res.data=pics[0];
+        console.log("2222"+res.data);
+        that.setData({
+          pic1: res.data
+        })
+      }  
+    })
+    wx.request({
+      url: 'http://127.0.0.1:3000/pLastest',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        console.log("1111" + res.data);
+        let pics = res.data.split(".jpg");
+        for (var i = 0; i < pics.length; i++) {
+          pics[i] = pics[i] + '.jpg';
+        }
+        res.data = pics[0];
+        console.log("2222" + res.data);
+        that.setData({
+          pic2: res.data
+        })
+      }
+    })
   },
   toDetail1: function (e) {
     let index = 0

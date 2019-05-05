@@ -41,6 +41,8 @@
 }
 .v-img{
   text-align: center;
+  overflow: hidden;
+  height: 200px;
 }
 .detailImg{
   width: 98%;

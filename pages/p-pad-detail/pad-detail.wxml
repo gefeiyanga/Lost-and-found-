@@ -20,7 +20,9 @@
     <view><text class="tele">联系方式：{{detailObj.tele}}</text></view>
   </view>
   <view class='v-img'>
-    <image class='detailImg' src="http://localhost/gfy/server/upload/{{detailObj.pic}}"></image> 
+    <block wx:for="{{detailObj.pic}}" wx:key="{{index}}">
+      <image class='detailImg' src="http://localhost/gfy/server/upload/{{detailObj.pic[index]}}"></image> 
+    </block>
   </view>
   <view class="review">
     <button>申请取回</button>

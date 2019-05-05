@@ -12,7 +12,9 @@
     <text class='detail'>{{detail}}</text>
   </view>
   <view class='v-img'>
-    <image class='detailImg' src="http://localhost/gfy/server/upload/{{pic}}"></image> 
+    <block wx:for="{{pic}}" wx:key="{{index}}">
+      <image class='detailImg' mode='aspectFit' src="http://localhost/gfy/server/upload/{{pic[index]}}"></image> 
+    </block>
   </view>
   <!-- <view class="love_attention">
       <image src="{{detail_love_image1}}"></image>

@@ -16,10 +16,10 @@
 </view>
 <swiper indicator-dots="true"	indicator-color="white"	indicator-active-color="black" autoplay="true" interval="2000" circular="true">
   <swiper-item bindtap='toDetail1'>
-    <!-- <image src="../../images/other/iphone_x.jpg"></image> -->
+    <image src="http://localhost/gfy/server/upload/{{pic1}}"></image>
   </swiper-item>
   <swiper-item bindtap='toDetail2'>
-    <!-- <image src="../../images/other/s10.jpg"></image> -->
+    <image src="http://localhost/gfy/server/upload/{{pic2}}"></image>
   </swiper-item>
   <swiper-item>
     <view class='content'>
