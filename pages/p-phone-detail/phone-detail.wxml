@@ -25,7 +25,7 @@
     </block>
   </view>
   <view class="review">
-    <button>申请取回</button>
+    <button catchtap='getbackReq'>申请取回</button>
   </view>
 </view>
 

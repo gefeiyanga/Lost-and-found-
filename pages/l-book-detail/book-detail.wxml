@@ -25,7 +25,7 @@
     </block>  
   </view>
   <view class="review">
-    <button>归还物品</button>
+    <button catchtap='returnIt'>归还物品</button>
   </view>
 </view>
 

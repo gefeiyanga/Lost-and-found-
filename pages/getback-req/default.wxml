@@ -1,0 +1,7 @@
+<!--pages/getback-req/default.wxml-->
+<!--pages/return/return.wxml-->
+<text>申请物品：</text><input bindinput='getReturnTitle'></input>
+<text>详细描述：</text><textarea bindinput='getReturnDescribe'></textarea>
+<text>姓名：</text><input bindinput='getReturnName'></input>
+<text>联系方式：</text><input bindinput='getReturnTele'></input>
+<button catchtap='commit'>提交</button>

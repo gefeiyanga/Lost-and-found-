@@ -103,7 +103,7 @@ Page({
       this.setData({
         tab: 'p_report'
       })
-    } else if (val.search("书本") != -1) {
+    } else if (val.search("《") != -1) {
       this.setData({
         tab: 'p_book'
       })

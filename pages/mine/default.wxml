@@ -1,8 +1,10 @@
 <!--pages/mine/default.wxml-->
 <!-- <text>pages/mine/default.wxml</text> -->
 <view>
-<view class="mineWhat">个人资料</view>
-<view class="mineWhat">我的发布</view>
-<view class="mineWhat">我的评论</view>
-<view class="mineWhat">我的积分</view>
+  <view class="mineWhat">
+    <navigator open-type='navigate' url='../../pages/noticeList1/list'>收物通知</navigator>
+  </view>
+  <view class="mineWhat">
+    <navigator open-type='navigate' url='../../pages/noticeList2/list'>申请通知</navigator>
+  </view>
 </view>

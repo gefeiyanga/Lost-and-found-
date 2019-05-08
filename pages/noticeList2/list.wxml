@@ -1,0 +1,13 @@
+<!--pages/noticeList2/list.wxml-->
+<!--pages/noticeList1/list.wxml-->
+<block wx:for="{{listArr}}" wx:key="index">
+  <view class='title'>物品:</view><text>{{listArr[index].returnTitle}}</text>
+  <view class='title'>详细内容：</view><text>{{listArr[index].returnDescribe}}</text>
+  <view class='title'>申请者：</view><text>{{listArr[index].returnName}}</text>
+  <view class='title'>联系电话：</view><text>{{listArr[index].returnTele}}</text>
+  <button>驳回</button>
+  <button catchtap='returnIt' data-index='{{index}}'>归还物品</button>
+     <!-- 分割线 -->
+  <view class="divLine"></view>
+</block>
+

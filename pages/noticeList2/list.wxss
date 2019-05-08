@@ -1,0 +1,17 @@
+/* pages/noticeList2/list.wxss */
+.title{
+  font-weight: bold;
+}
+button{
+  width: 30%;
+  background-color: #408bfd;
+  margin-top: 40rpx;
+  margin-left: 450rpx;
+  color: white;
+  line-height: 60rpx;
+}
+.divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+}

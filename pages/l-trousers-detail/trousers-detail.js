@@ -51,6 +51,12 @@ Page({
       }
     });
   },
+  returnIt: function () {
+    console.log(this.data.listArr[this.data.index].title);
+    wx.navigateTo({
+      url: `../../pages/return/return?releaseTitle=${this.data.listArr[this.data.index].title}&releaseName=${this.data.listArr[this.data.index].uname}`,
+    })
+  },
   // handleCollection:function(){
   //   console.log(this);
   //   let isCollected = !this.data.isCollected;

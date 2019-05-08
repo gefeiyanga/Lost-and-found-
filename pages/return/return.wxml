@@ -1,7 +1,7 @@
 <!--pages/return/return.wxml-->
-<text>待还物品：</text><input></input>
-<text>归还时间：</text><input></input>
-<text>归还地点：</text><input></input>
-<text>姓名：</text><input></input>
-<text>联系方式：</text><input></input>
-<button>提交</button>
+<text>待还物品：</text><input bindinput='getReturnTitle'></input>
+<text>归还时间：</text><input bindinput='getReturnTime'></input>
+<text>归还地点：</text><input bindinput='getReturnAddr'></input>
+<text>姓名：</text><input bindinput='getReturnName'></input>
+<text>联系方式：</text><input bindinput='getReturnTele'></input>
+<button catchtap='commit'>提交</button>

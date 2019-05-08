@@ -1,0 +1,36 @@
+<!--pages/detail/detail.wxml-->
+<view class='tempContainer'>
+  <view class='avatar_date'>
+    <image src="{{listArr[0].avatar}}"></image>
+    <text style='font-weight:blod'>{{listArr[0].uname}}</text>
+    <text style='magin:10rpx;font-size:12px'>发布于</text>
+    <text style='font-size:12px'>{{listArr[0].date}}</text>
+  </view>
+  <!-- <view class="detail_collection_share">
+    <view class="col_share_img">
+      <image catchtap="handleCollection" src="{{isCollected?'../../images/detail/collection.png': '/images/detail/collection-anti.png'}}"></image>
+      <image catchtap="handleShare" src="../../images/detail/share.png"></image>
+    </view>
+    <view class="line"></view>
+  </view> -->
+  <text class="title">{{listArr[0].title}}</text>
+  <view class='content'>
+    <view><text class='detail'>{{listArr[0].detail}}</text></view>
+    <view><text class="name">姓名：{{listArr[0].name}}</text></view>
+    <view><text class="tele">联系方式：{{listArr[0].tele}}</text></view>
+  </view>
+  <view class='v-img'>
+    <block wx:for="{{listArr[0].pic}}" wx:key="{{index}}">
+      <image class='detailImg' src="http://localhost/gfy/server/upload/{{listArr[0].pic[index]}}"></image> 
+    </block> 
+  </view>
+  <view class="review">
+    <view wx:if="{{flag}}">
+      <button catchtap='getbackReq'>申请取回</button>
+    </view>
+    <view wx:else>
+      <button catchtap='returnIt'>归还物品</button>
+    </view>
+  </view>
+</view>
+

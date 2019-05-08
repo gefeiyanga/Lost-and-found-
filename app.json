@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/mine/default",
     "pages/index/index",
     "pages/search/default",
     "pages/p-classify/default",
@@ -7,7 +8,6 @@
     "pages/lost/newLost",
     "pages/return/return",
     "pages/home/default",
-    "pages/mine/default",
     "pages/logs/logs",
     "pages/pick/newPick",
     "pages/l-phone-list/phone-list",
@@ -23,7 +23,6 @@
     "pages/l-shirt-list/shirt-list",
     "pages/l-shirt-detail/shirt-detail",
     "pages/l-trousers-list/trousers-list",
-
     "pages/l-trousers-detail/trousers-detail",
     "pages/l-cap-list/cap-list",
     "pages/l-penbox-detail/penbox-detail",
@@ -91,7 +90,11 @@
     "pages/p-idcard-detail/idcard-detail",
     "pages/p-other-list/other-list",
     "pages/p-other-detail/other-detail",
-    "pages/searchListShow/default"
+    "pages/searchListShow/default",
+    "pages/detail/default",
+    "pages/noticeList1/list",
+    "pages/getback-req/default",
+    "pages/noticeList2/list"
   ],
   "permission": {
     "scope.userLocation": {
@@ -128,10 +131,10 @@
         "text": "拾物分类"
       },
       {
-        "selectedIconPath": "images/tabBar/mine_selected.png",
-        "iconPath": "images/tabBar/mine.png",
+        "selectedIconPath": "images/tabBar/xiaoxi_selected.png",
+        "iconPath": "images/tabBar/xiaoxi.png",
         "pagePath": "pages/mine/default",
-        "text": "我的"
+        "text": "通知"
       }
     ]
   },
