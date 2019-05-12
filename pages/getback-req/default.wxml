@@ -1,7 +1,27 @@
 <!--pages/getback-req/default.wxml-->
-<!--pages/return/return.wxml-->
-<text>申请物品：</text><input bindinput='getReturnTitle'></input>
+<!-- <text>申请物品：</text><input bindinput='getReturnTitle'></input>
 <text>详细描述：</text><textarea bindinput='getReturnDescribe'></textarea>
 <text>姓名：</text><input bindinput='getReturnName'></input>
 <text>联系方式：</text><input bindinput='getReturnTele'></input>
-<button catchtap='commit'>提交</button>
+<button catchtap='commit'>提交</button> -->
+
+<form>
+	<view class="cu-form-group margin-top">
+		<view class="title">申请物品</view>
+		<input maxlength="16" bindinput="getReturnTitle"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">详细描述</view>
+    <textarea maxlength="128" bindinput="getReturnDescribe" placeholder="请尽可能详细描述该物品"></textarea>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">您的姓名</view>
+		<input bindinput="getReturnName" maxlength="6"></input>
+	</view>
+  <view class="cu-form-group">
+		<view class="title">联系方式</view>
+		<input bindinput="getReturnTele" maxlength="11"></input>
+	</view><view class="padding flex flex-direction">
+    <button class="cu-btn bg-grey lg" catchtap='commit'>提交</button>
+  </view>
+</form>

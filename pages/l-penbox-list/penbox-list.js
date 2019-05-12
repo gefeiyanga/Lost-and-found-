@@ -1,4 +1,4 @@
-
+var utils=require('../../utils/util.js');
 Page({
 
   /**
@@ -6,6 +6,7 @@ Page({
    */
   data: {
     listArr:[],
+    showTitle:[]
   },
 
   /**
@@ -13,7 +14,24 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(that);
+    console.log(that); 
+    wx.request({
+      url: 'http://127.0.0.1:3000/showFinish',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        let arr = [];
+        for (var i = 0; i < res.data.length; i++) {
+          arr[i] = res.data[i].releaseTitle
+        }
+        // console.log(arr);
+        that.setData({
+          showTitle: arr
+        })
+        // console.log(that.data.showTitle);
+      }
+    })
     wx.request({
       url: 'http://127.0.0.1:3000/lPenboxList',
       method:'GET',
@@ -21,9 +39,19 @@ Page({
       header:{'content-type':'application/json'},
       success:function(res){
         console.log(res.data);
+        console.log(that.data.showTitle);
+        let arr = that.data.showTitle;
         // console.log(typeof(res.data));  //对象
         for (var key in res.data) {
           //console.log(typeof(res.data[key]));  //对象
+          for(let i=0;i<arr.length;i++){
+            if (res.data[key].title==arr[i]){
+              console.log(res.data[key].title)
+              res.data[key].show=true
+            }else{
+              res.data[key].show = false;
+            }
+          }
           console.log(res.data[key].pic);
           var pics = res.data[key].pic.split(".jpg");
           for (var i = 0; i < pics.length; i++) {
@@ -52,14 +80,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

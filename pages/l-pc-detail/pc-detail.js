@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+var app=getApp();
 Page({
 
   /**
@@ -8,13 +9,15 @@ Page({
     detailObj: {},
     listArr: [],
     index: null,
-    isCollected: false
+    isCollected: false,
+    preFlag:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var nickName=app.globalData.userInfo.nickName;
     var that = this;
     console.log(that);
     wx.request({
@@ -46,6 +49,11 @@ Page({
         // console.log(index)
         //更新data中dataObj的状态值
         console.log(that.data.listArr);
+        if (nickName == that.data.listArr[index].uname) {
+          that.setData({
+            preFlag: false
+          })
+        }
         that.setData({
           detailObj: that.data.listArr[index],
           index

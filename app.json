@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/mine/default",
     "pages/index/index",
+    "pages/home/default",
+    "pages/mine/default",
     "pages/search/default",
     "pages/p-classify/default",
     "pages/l-classify/default",
     "pages/lost/newLost",
     "pages/return/return",
-    "pages/home/default",
     "pages/logs/logs",
     "pages/pick/newPick",
     "pages/l-phone-list/phone-list",
@@ -94,7 +94,9 @@
     "pages/detail/default",
     "pages/noticeList1/list",
     "pages/getback-req/default",
-    "pages/noticeList2/list"
+    "pages/noticeList2/list",
+    "pages/noticeList3/list",
+    "pages/picToDetail2/detail2"
   ],
   "permission": {
     "scope.userLocation": {

@@ -42,9 +42,7 @@ function showList(router,that){
   });
 }
 
-
-
 module.exports = {
   formatTime: formatTime,
-  showList: showList
+  showList: showList,
 }

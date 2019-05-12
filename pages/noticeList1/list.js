@@ -26,23 +26,49 @@ Page({
       data: {},
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        // console.log(res.data);
+        console.log(res.data);
         console.log(that.data.nickName);
+        console.log(res.data);
+        let arr=[];
         for(var key in res.data){
           // console.log(res.data[key]);
-          console.log(res.data[key].releaseName);
-          if(that.data.nickName!=res.data[key].releaseName){
-            res.data.splice(key,1);
+          // console.log('发帖者' + res.data[key].releaseName);
+          // console.log('登录者'+that.data.nickName);
+          console.log(res.data[key]);
+          if(that.data.nickName==res.data[key].releaseName){
+            arr[arr.length] = res.data[key]
           }
         }
+        console.log(arr);
         that.setData({
-          listArr: res.data.reverse()
+          listArr: arr
         })
         console.log(that.data.listArr);
       }
     })
   },
-
+  toFinish:function(e){
+    console.log(e.currentTarget.dataset.index);
+    let index = e.currentTarget.dataset.index;
+    console.log(this.data.listArr[index].releaseTitle);
+    let releaseTitle = this.data.listArr[index].releaseTitle;
+    wx.request({
+      url: 'http://127.0.0.1:3000/finish',
+      method: 'POST',
+      data: {
+        releaseTitle
+      },
+      header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      success: (res) => {
+        wx.navigateBack({
+          delta: 0  //小程序关闭当前页面返回上一页面
+        })
+        wx.showToast({
+          title: '已完成',
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

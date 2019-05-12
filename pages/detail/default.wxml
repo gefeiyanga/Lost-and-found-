@@ -21,10 +21,10 @@
   </view>
   <view class='v-img'>
     <block wx:for="{{listArr[0].pic}}" wx:key="{{index}}">
-      <image class='detailImg' src="http://localhost/gfy/server/upload/{{listArr[0].pic[index]}}"></image> 
+      <image class='detailImg' src="http://127.0.0.1/gfy/server/upload/{{listArr[0].pic[index]}}"></image> 
     </block> 
   </view>
-  <view class="review">
+  <view wx:if="{{preFlag}}" class="review">
     <view wx:if="{{flag}}">
       <button catchtap='getbackReq'>申请取回</button>
     </view>

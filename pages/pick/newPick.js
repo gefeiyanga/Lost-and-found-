@@ -186,7 +186,14 @@ Page({
           })
         }
       })
-    } 
+    }
+    wx.showLoading({
+      title: '上传中',
+    })
+
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000) 
   },
   release:function(){
     var that = this;    

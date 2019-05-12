@@ -44,7 +44,7 @@ Page({
     let index = e.currentTarget.dataset.index
     console.log(index)
     wx.navigateTo({
-      url: '../../pages/p-watch-detail/watch-detail?index=' + index,
+      url: '../../pages/p-stuidcard-detail/stuidcard-detail?index=' + index,
     })
   },
   /**

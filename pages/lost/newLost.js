@@ -187,6 +187,13 @@ Page({
         }
       })
     } 
+    wx.showLoading({
+      title: '加载中',
+    })
+
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000) 
   },
   release:function(){
     var that = this;    

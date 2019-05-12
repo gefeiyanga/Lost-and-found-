@@ -1,4 +1,4 @@
-/* pages/pick/newLost.wxss */
+/* pages/pick/newLost.wxss
 .title-t,.detail-t{
   width: 100%; background: #FCFCFC; border-top: 2rpx #ECECEC solid; padding:10rpx 10rpx; font-size: 20px; color: #408bfd;
 }
@@ -20,7 +20,6 @@
   
   ;
 }
-/* 获取当前位置 */
 .getGps{
   width: 92%; background: #FCFCFC; border-top: 2rpx #ECECEC solid; padding:3% 4%; font-size: 14px; color: #999;   margin-top: 30rpx;
 }
@@ -38,4 +37,13 @@ form image.picSrc{
 }
 .pic{
   margin: 40rpx;
+}
+
+image.picSrc{
+  width: 248rpx;
+  height:248rpx;
+} */
+image.picSrc{
+  width: 248rpx;
+  height:248rpx;
 }

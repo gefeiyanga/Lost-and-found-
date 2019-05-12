@@ -1,19 +1,20 @@
 <!--pages/template/list-template.wxml-->
 <!-- <text>pages/template/list-template.wxml</text> -->
 <template name="listTemp">
-<view class='tempContainer'>
+<view class='tempContainer  class="padding-xl radius shadow-warp bg-white margin-top'>
   <view class='avatar_date'>
     <image src="{{avatar}}"></image>
     <text>{{uname}}</text>
     <text class='date'>{{date}}</text>
   </view>
   <text class="title">{{title}}</text>
+  <image class='suc' style="visibility:  {{ show? '' :  'hidden' }}" src="../../images/suc.png"></image>
   <view class='content'>
     <text class='detail'>{{detail}}</text>
   </view>
   <view class='v-img'>
     <block wx:for="{{pic}}" wx:key="{{index}}">
-      <image class='detailImg' mode='aspectFit' src="http://localhost/gfy/server/upload/{{pic[index]}}"></image> 
+      <image class='detailImg' mode='aspectFit' src="http://127.0.0.1/gfy/server/upload/{{pic[index]}}"></image> 
     </block>
   </view>
   <!-- <view class="love_attention">

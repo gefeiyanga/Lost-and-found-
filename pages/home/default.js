@@ -14,12 +14,14 @@ Page({
     weather: [],
     pic1: '',
     pic2: '',
+    title1:'',
+    title2:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function () { 
     this.loadInfo();
     var that = this;
     console.log(that);
@@ -29,15 +31,16 @@ Page({
       data: {},
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        console.log("1111"+res.data);
-        let pics = res.data.split(".jpg");
+        console.log("1111" + res.data.pic);
+        let pics = res.data.pic.split(".jpg");
         for (var i = 0; i < pics.length; i++) {
           pics[i] = pics[i] + '.jpg';
         }
-        res.data=pics[0];
-        console.log("2222"+res.data);
+        res.data.pic=pics[0];
+        console.log("2222" + res.data.pic);
         that.setData({
-          pic1: res.data
+          pic1: res.data.pic,
+          title1: res.data.title
         })
       }  
     })
@@ -47,31 +50,33 @@ Page({
       data: {},
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        console.log("1111" + res.data);
-        let pics = res.data.split(".jpg");
+        console.log("1111" + res.data.pic);
+        let pics = res.data.pic.split(".jpg");
         for (var i = 0; i < pics.length; i++) {
           pics[i] = pics[i] + '.jpg';
         }
-        res.data = pics[0];
-        console.log("2222" + res.data);
+        res.data.pic = pics[0];
+        console.log("2222" + res.data.pic);
         that.setData({
-          pic2: res.data
+          pic2: res.data.pic,
+          title2:res.data.title
         })
       }
     })
   },
   toDetail1: function (e) {
-    let index = 0
-    console.log(index)
+    // let index = 0
+    // console.log(index)
     wx.navigateTo({
-      url: '../../pages/detail/detail?index=' + index,
+      url: '../../pages/picToDetail2/detail2?title1=' + this.data.title1,
     })
   },
   toDetail2: function (e) {
-    let index = 1
-    console.log(index)
+    console.log(this.data.title2);
+    // let index = 1
+    // console.log(index)
     wx.navigateTo({
-      url: '../../pages/detail/detail?index=' + index,
+      url: '../../pages/picToDetail2/detail2?title2=' + this.data.title2,
     })
   },
   //获取焦点后跳转到搜索

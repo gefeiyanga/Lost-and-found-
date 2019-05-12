@@ -1,0 +1,14 @@
+<!--pages/noticeList1/list.wxml-->
+<block wx:for="{{listArr}}" wx:key="index">
+  <view wx:if="{{listArr[index].isReject==0}}">
+    <view class='title'>物品:</view><text>{{listArr[index].returnTitle}}</text>
+    <view class='title'>归还时间：</view><text>{{listArr[index].returnTime}}</text>
+    <view class='title'>归还地点：</view><text>{{listArr[index].returnAddr}}</text>
+  </view>
+  <view wx:else>
+    <view class='title'>物品:</view><text>{{listArr[index].returnTitle}}</text>
+    <view>您已拒绝了对方的申请！</view>
+  </view>
+    <!-- 分割线 -->
+  <view class="divLine"></view>
+</block>

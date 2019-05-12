@@ -1,6 +1,5 @@
 /* pages/getback-req/default.wxss */
-/* pages/return/return.wxss */
-text{
+/* text{
   margin: 50rpx 50rpx;
 }
 input,textarea{
@@ -12,4 +11,4 @@ input,textarea{
 button{
   margin-top:80rpx;
   width: 80%;
-}
+} */

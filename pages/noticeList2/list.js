@@ -7,6 +7,7 @@ Page({
    */
   data: {
     nickName: '',
+    avatarUrl:'',
     listArr: [],
   },
 
@@ -16,7 +17,8 @@ Page({
   onLoad: function (options) {
     if (app.globalData.userInfo) {
       this.setData({
-        nickName: app.globalData.userInfo.nickName
+        nickName: app.globalData.userInfo.nickName,
+        avatarUrl: app.globalData.userInfo.avatarUrl
       })
     }
     var that = this;
@@ -28,15 +30,16 @@ Page({
       success: function (res) {
         // console.log(res.data);
         console.log(that.data.nickName);
+        let arr=[];
         for (var key in res.data) {
           // console.log(res.data[key]);
           console.log(res.data[key].releaseName);
-          if (that.data.nickName != res.data[key].releaseName) {
-            res.data.splice(key, 1);
+          if (that.data.nickName == res.data[key].releaseName && res.data[key].isDeal==1) {
+            arr[arr.length]=res.data[key]
           }
         }
         that.setData({
-          listArr: res.data.reverse()
+          listArr: arr
         })
         console.log(that.data.listArr);
       }
@@ -48,7 +51,50 @@ Page({
     console.log(this.data.listArr[index].releaseTitle);
     // console.log(this.data.listArr[index].title);
     wx.navigateTo({
-      url: `../../pages/return/return?releaseTitle=${this.data.listArr[index].releaseTitle}&releaseName=${this.data.listArr[index].releaseName}`,
+      url: `../../pages/return/return?releaseTitle=${this.data.listArr[index].releaseTitle}&releaseName=${this.data.listArr[index].returnNickName}`,
+    })
+  },
+  rejectIt: function(e){
+    let index = e.currentTarget.dataset.index;
+    console.log(this.data.listArr[index].releaseTitle);
+    console.log(this.data.listArr[index].returnNickName); 
+    console.log(this.data.listArr[index].returnTitle); 
+    wx.request({
+      url: 'http://127.0.0.1:3000/rejectCommit',
+      method:'POST',
+      data:{
+        releaseTitle:this.data.listArr[index].releaseTitle,
+        releaseName: this.data.listArr[index].returnNickName,
+        returnTitle: this.data.listArr[index].returnTitle,
+        returnNickName: this.data.nickName,
+        returnAvatarUrl: this.data.avatarUrl,
+        isReject:1
+      },
+      header: { 'Content-Type':'application/x-www-form-urlencoded'},
+      success: (res)=> {
+        console.log('1111'+this.data.listArr[index].releaseTitle);
+        wx.request({
+          url: 'http://127.0.0.1:3000/setStatus',
+          method: 'POST',
+          data: {
+            releaseTitle: this.data.listArr[index].releaseTitle,
+          },
+          header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          success:(res)=>{
+            console.log(res.data)
+          }
+        })
+
+        console.log(res.data);
+        wx.navigateBack({
+          delta: 0  //小程序关闭当前页面返回上一页面
+        })
+        wx.showToast({
+          title: '发布成功！',
+          // icon: 'success',
+          // duration: 2000
+        })
+      },
     })
   },
 

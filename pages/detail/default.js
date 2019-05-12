@@ -1,5 +1,6 @@
 // pages/detail/default.js
 var utils=require('../../utils/util.js');
+var app=getApp();
 
 Page({
 
@@ -8,13 +9,17 @@ Page({
    */
   data: {
     listArr:[],
-    flag:true
+    preFlag:true,
+    flag:true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (app.globalData.userInfo) {
+      var nickName = app.globalData.userInfo.nickName;
+    }
     console.log(options.title); 
     var val = options.title;
     var that=this;
@@ -33,6 +38,12 @@ Page({
         for (var key in res.data) {
           //console.log(typeof(res.data[key]));  //对象
           console.log(typeof (res.data[key].pic));
+          console.log(nickName, res.data[key].uname)
+          if (nickName == res.data[key].uname) {
+            that.setData({
+              preFlag: false
+            })
+          }
           if (res.data[key].title.search("捡到")){
             that.setData({
               flag:false

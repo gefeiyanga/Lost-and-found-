@@ -1,5 +1,5 @@
 /* pages/return/return.wxss */
-text{
+/* text{
   margin: 50rpx 50rpx;
 }
 input{
@@ -11,4 +11,4 @@ input{
 button{
   margin-top:80rpx;
   width: 80%;
-}
+} */

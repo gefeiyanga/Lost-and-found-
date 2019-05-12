@@ -81,9 +81,21 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
+        console.log(that.data.releaseTitle);
+        wx.request({
+          url: 'http://127.0.0.1:3000/setStatus',
+          method: 'POST',
+          data: {
+            releaseTitle: that.data.releaseTitle,
+          },
+          header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          success: (res) => {
+            console.log(res.data)
+          }
+        })
         console.log(res.data);
         wx.navigateBack({
-          delta: 0  //小程序关闭当前页面返回上一页面
+          delta: 2  //小程序关闭当前页面返回上一页面
         })
         wx.showToast({
           title: '发布成功！',
