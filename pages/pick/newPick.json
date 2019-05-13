@@ -1,8 +1,5 @@
 {
   "navigationBarTitleText":"捡到物品",
   "component": true,
-  "usingComponents": {
-    "i-button": "../../dist/button/index",
-    "i-input": "../../dist/input/index"
-  }
+  "usingComponents": {}
 }

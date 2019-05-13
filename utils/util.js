@@ -22,9 +22,19 @@ function showList(router,that){
     header: { 'content-type': 'application/json' },
     success: function (res) {
       console.log(res.data);
+      console.log(that.data.showTitle);
+      let arr = that.data.showTitle;
       // console.log(typeof(res.data));  //对象
       for (var key in res.data) {
         //console.log(typeof(res.data[key]));  //对象
+        res.data[key].show = false;
+        for (let i = 0; i < arr.length; i++) {
+          if (res.data[key].title == arr[i]) {
+            res.data[key].show = true;
+            console.log(res.data[key].title)
+            console.log(res.data[key].show);
+          }
+        }
         console.log(res.data[key].pic);
         var pics = res.data[key].pic.split(".jpg");
         for (var i = 0; i < pics.length; i++) {

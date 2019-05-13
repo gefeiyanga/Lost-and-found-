@@ -1,4 +1,8 @@
 {
-  "navigationBarTitleText":"收物通知",
-  "usingComponents": {}
+  "navigationBarTitleText":"收物列表",
+  "usingComponents": {
+    "van-panel": "../../lib/panel/index",
+    "van-collapse": "../../lib/collapse/index",
+    "van-collapse-item": "../../lib/collapse-item/index"
+  }
 }

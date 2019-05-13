@@ -6,7 +6,7 @@ Page({
    */
   data: {
     listArr:[],
-    // index:''
+    showTitle:[]
   },
 
   /**
@@ -15,6 +15,23 @@ Page({
   onLoad: function (options) {
     var that = this;
     console.log(that);
+    wx.request({
+      url: 'http://127.0.0.1:3000/showFinish',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        let arr = [];
+        for (var i = 0; i < res.data.length; i++) {
+          arr[i] = res.data[i].releaseTitle
+        }
+        // console.log(arr);
+        that.setData({
+          showTitle: arr
+        })
+        // console.log(that.data.showTitle);
+      }
+    })
     var router='pPhoneList';
     utils.showList(router,that);
   },

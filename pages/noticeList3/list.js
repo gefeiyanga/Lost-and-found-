@@ -7,7 +7,8 @@ Page({
    */
   data: {
     nickName: '',
-    listArr: [],
+    listArr: [], 
+    activeName:0
   },
 
   /**
@@ -46,6 +47,11 @@ Page({
         console.log(that.data.listArr);
       }
     })
+  },
+  onChange(event) {
+    this.setData({
+      activeName: event.detail
+    });
   },
 
   /**

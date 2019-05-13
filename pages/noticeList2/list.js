@@ -9,6 +9,7 @@ Page({
     nickName: '',
     avatarUrl:'',
     listArr: [],
+    activeName: 0
   },
 
   /**
@@ -96,6 +97,11 @@ Page({
         })
       },
     })
+  },
+  onChange(event) {
+    this.setData({
+      activeName: event.detail
+    });
   },
 
   /**

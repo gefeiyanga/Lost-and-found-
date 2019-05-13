@@ -1,7 +1,7 @@
 /* pages/noticeList1/list.wxss */
-.title{
+/* .title{
   font-weight: bold;
-}
+} */
 .divLine{
  background: #E0E3DA;
  width: 100%;

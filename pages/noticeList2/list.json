@@ -1,4 +1,8 @@
 {
-  "navigationBarTitleText":"申请请求",
-  "usingComponents": {}
+  "navigationBarTitleText":"申请列表",
+  "usingComponents": {
+    "van-panel": "../../lib/panel/index",
+    "van-collapse": "../../lib/collapse/index",
+    "van-collapse-item": "../../lib/collapse-item/index"
+  }
 }

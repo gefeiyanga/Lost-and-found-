@@ -1,22 +1,35 @@
 <!--pages/noticeList1/list.wxml-->
-<block wx:for="{{listArr}}" wx:key="index">
-  <view wx:if="{{listArr[index].isReject==0}}">
-    <view class='title'>物品:</view><text>{{listArr[index].returnTitle}}</text>
-    <view class='title'>取物时间：</view><text>{{listArr[index].returnTime}}</text>
-    <view class='title'>取物地点：</view><text>{{listArr[index].returnAddr}}</text>
-    <view class='title'>拾物者：</view><text>{{listArr[index].returnName}}</text>
-    <view class='title'>联系电话：</view><text>{{listArr[index].returnTele}}</text>
-    <view wx:if="{{listArr[index].isFinish==0}}">
-      <button bindtap='toFinish' data-index='{{index}}'>完成</button>
-    </view>
-    <view wx:else>
-      <button disabled='true'>已完成</button>
-    </view>
-  </view>
-  <view wx:else>
-    <view class='title'>物品:</view><text>{{listArr[index].returnTitle}}</text>
-    <view>拾物者认为你的描述与拾物详情不符合，拒绝了你的申请！</view>
-  </view>
-    <!-- 分割线 -->
-  <view class="divLine"></view>
-</block>
+<van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+  <block wx:for="{{listArr}}" wx:key="index">
+    <van-collapse-item title="{{listArr[index].returnTitle}}" name="{{index}}">
+      <view wx:if="{{listArr[index].isReject==0}}">
+        <van-panel title="取物时间" desc="{{listArr[index].returnTime}}">
+        </van-panel>
+        <van-panel title="取物地点" desc="{{listArr[index].returnAddr}}">
+        </van-panel>
+        <van-panel title="拾物者" desc="{{listArr[index].returnName}}">
+        </van-panel>
+        <van-panel title="联系电话" desc="{{listArr[index].returnTele}}">
+        </van-panel>
+        <!-- <view class='title'>物品:</view><text>{{listArr[index].returnTitle}}</text>
+        <view class='title'>取物时间：</view><text>{{listArr[index].returnTime}}</text>
+        <view class='title'>取物地点：</view><text>{{listArr[index].returnAddr}}</text>
+        <view class='title'>拾物者：</view><text>{{listArr[index].returnName}}</text>
+        <view class='title'>联系电话：</view><text>{{listArr[index].returnTele}}</text> -->
+        <view class="padding flex justify-end" wx:if="{{listArr[index].isFinish==0}}">
+          <button class="cu-btn bg-blue lg" bindtap='toFinish' data-index='{{index}}'>完成</button>
+        </view>
+        <view class="padding flex justify-end" wx:else>
+          <button class="cu-btn bg-gray lg" disabled='true'>已完成</button>
+        </view>
+      </view>
+      <view wx:else>
+        <van-panel>
+          <view>拾物者认为你的描述与拾物详情不符合，拒绝了你的申请！</view>
+        </van-panel>
+        <!-- <view class='title'>物品:</view><text>{{listArr[index].returnTitle}}</text>
+        <view>拾物者认为你的描述与拾物详情不符合，拒绝了你的申请！</view> -->
+      </view>
+    </van-collapse-item>
+  </block>
+</van-collapse>

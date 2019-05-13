@@ -7,7 +7,8 @@ Page({
    */
   data: {
     nickName:'',
-    listArr:[],
+    listArr: [],
+    activeName: 0
   },
 
   /**
@@ -41,7 +42,7 @@ Page({
         }
         console.log(arr);
         that.setData({
-          listArr: arr
+          listArr: arr.reverse()
         })
         console.log(that.data.listArr);
       }
@@ -72,6 +73,11 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  onChange(event) {
+    this.setData({
+      activeName: event.detail
+    });
+  },
   onReady: function () {
 
   },

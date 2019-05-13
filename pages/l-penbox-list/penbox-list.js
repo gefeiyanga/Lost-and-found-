@@ -1,4 +1,3 @@
-var utils=require('../../utils/util.js');
 Page({
 
   /**
@@ -44,12 +43,11 @@ Page({
         // console.log(typeof(res.data));  //对象
         for (var key in res.data) {
           //console.log(typeof(res.data[key]));  //对象
+          res.data[key].show = false;
           for(let i=0;i<arr.length;i++){
             if (res.data[key].title==arr[i]){
               console.log(res.data[key].title)
               res.data[key].show=true
-            }else{
-              res.data[key].show = false;
             }
           }
           console.log(res.data[key].pic);
