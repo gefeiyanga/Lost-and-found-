@@ -22,7 +22,19 @@ Page({
         avatarUrl: app.globalData.userInfo.avatarUrl
       })
     }
-    var that = this;
+    var that = this; 
+    wx.request({
+      url: 'http://127.0.0.1:3000/cancelReqDot',
+      method: 'POST',
+      data: {
+        releaseName: that.data.nickName
+      },
+      header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      success: (res) => {
+        app.globalData.dot2=false
+        // console.log(res.data);
+      }
+    })
     wx.request({
       url: 'http://127.0.0.1:3000/getbackReqNoticeList',
       method: 'GET',

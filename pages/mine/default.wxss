@@ -1,5 +1,5 @@
 /* pages/mine/default.wxss */
-page{
+/* page{
     margin:0;
     padding:0;
     box-sizing: border-box;
@@ -11,4 +11,10 @@ page{
     height:120rpx;
     border-bottom: 1px solid #dedede;
     line-height: 120rpx;
+} */
+.dot{
+  width: 25rpx;
+  height: 25rpx;
+  background: red;
+  border-radius: 50%;
 }

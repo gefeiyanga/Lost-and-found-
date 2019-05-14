@@ -22,6 +22,18 @@ Page({
     }
     var that = this;
     wx.request({
+      url: 'http://127.0.0.1:3000/cancelReturnDot',
+      method: 'POST',
+      data: {
+        releaseName:that.data.nickName
+      },
+      header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      success: (res) => {
+        app.globalData.dot1 = false
+        // console.log(res.data);
+      }
+    })
+    wx.request({
       url: 'http://127.0.0.1:3000/returnNoticeList',
       method: 'GET',
       data: {},

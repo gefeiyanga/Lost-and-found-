@@ -42,7 +42,7 @@ Page({
         }
         console.log(arr);
         that.setData({
-          listArr: arr
+          listArr: arr.reverse()
         })
         console.log(that.data.listArr);
       }

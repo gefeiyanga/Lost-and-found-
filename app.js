@@ -34,6 +34,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    dot1: false,
+    dot2: false,
+    isShowDot: false
   }
 })

@@ -1,5 +1,6 @@
 // pages/demo01/default.js
 var amapFile = require('../../libs/amap-wx.js');
+var app=getApp();
 var markersData = {
   latitude: '',//纬度
   longitude: '',//经度
@@ -15,7 +16,7 @@ Page({
     pic1: '',
     pic2: '',
     title1:'',
-    title2:''
+    title2:'',
   },
 
   /**
@@ -25,6 +26,54 @@ Page({
     this.loadInfo();
     var that = this;
     console.log(that);
+    var nickName = app.globalData.userInfo.nickName;
+    var that = this;
+    wx.request({
+      url: 'http://127.0.0.1:3000/returnDot',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        for (var key in res.data) {
+          console.log(res.data[key]);
+          if (res.data[key].releaseName == nickName) {
+            console.log(res.data[key].releaseName);
+            if (res.data[key].isUnreadReturn == 0) {
+              app.globalData.dot1 = true;
+              break;
+            }
+          }
+        }
+      }
+    })
+    wx.request({
+      url: 'http://127.0.0.1:3000/reqDot',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        for (var key in res.data) {
+          console.log(res.data[key].releaseName);
+          if (res.data[key].releaseName == nickName) {
+            console.log(res.data[key].releaseName);
+            if (res.data[key].isUnreadReq == 0) {
+              app.globalData.dot2=true;
+              break;
+            }
+          }
+        }
+        if (app.globalData.dot1 == true || app.globalData.dot2 == true){
+          app.globalData.isShowDot=true;
+        }
+        console.log();
+        if (app.globalData.isShowDot == true){
+          wx.setTabBarBadge({
+            index: 3,
+            text: '...'
+          })
+        }
+      }
+    })
     wx.request({
       url: 'http://127.0.0.1:3000/lLastest',
       method: 'GET',
