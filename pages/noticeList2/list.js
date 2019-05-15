@@ -103,7 +103,7 @@ Page({
           delta: 0  //小程序关闭当前页面返回上一页面
         })
         wx.showToast({
-          title: '发布成功！',
+          title: '已驳回！',
           // icon: 'success',
           // duration: 2000
         })

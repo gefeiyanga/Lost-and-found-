@@ -10,7 +10,8 @@ Page({
     listArr: [],
     index: null,
     isCollected: false,
-    preFlag:true
+    preFlag:true,
+    showTitle:[]
   },
 
   /**
@@ -20,6 +21,23 @@ Page({
     var nickName=app.globalData.userInfo.nickName;
     var that = this;
     console.log(that);
+    wx.request({
+      url: 'http://127.0.0.1:3000/showFinish',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        let arr = [];
+        for (var i = 0; i < res.data.length; i++) {
+          arr[i] = res.data[i].releaseTitle
+        }
+        // console.log(arr);
+        that.setData({
+          showTitle: arr
+        })
+        // console.log(that.data.showTitle);
+      }
+    })
     wx.request({
       url: 'http://127.0.0.1:3000/pPcList',
       method: 'GET',
@@ -48,7 +66,15 @@ Page({
         // console.log(index)
         //更新data中dataObj的状态值
         console.log(that.data.listArr);
-        if (nickName == that.data.listArr[index].uname) {
+        let arr2=that.data.showTitle;
+        var finish=false;
+        for(var i=0;i<arr2.length;i++){
+          if (arr2[i] == that.data.listArr[index].title){
+            finish=true;
+            break;
+          }
+        }
+        if (nickName == that.data.listArr[index].uname||finish==true) {
           that.setData({
             preFlag: false
           })

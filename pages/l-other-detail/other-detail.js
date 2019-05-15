@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+var app=getApp();
 Page({
 
   /**
@@ -8,15 +9,35 @@ Page({
     detailObj:{},
     listArr:[],
     index:null,
-    isCollected:false
+    isCollected:false,
+    preFlag:true,
+    showTitle:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var nickName=app.globalData.userInfo.nickName;
     var that = this;
     console.log(that);
+    wx.request({
+      url: 'http://127.0.0.1:3000/showFinish',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        let arr = [];
+        for (var i = 0; i < res.data.length; i++) {
+          arr[i] = res.data[i].releaseTitle
+        }
+        // console.log(arr);
+        that.setData({
+          showTitle: arr
+        })
+        // console.log(that.data.showTitle);
+      }
+    })
     wx.request({
       url: 'http://127.0.0.1:3000/lOtherList',
       method: 'GET',
@@ -46,6 +67,19 @@ Page({
         // console.log(index)
         //更新data中dataObj的状态值
         console.log(that.data.listArr);
+        let arr2=that.data.showTitle;
+        var finish=false;
+        for(var i=0;i<arr2.length;i++){
+          if (arr2[i] == that.data.listArr[index].title){
+            finish=true;
+            break;
+          }
+        }
+        if (nickName == that.data.listArr[index].uname||finish==true) {
+          that.setData({
+            preFlag: false
+          })
+        }
         that.setData({
           detailObj: that.data.listArr[index],
           index
