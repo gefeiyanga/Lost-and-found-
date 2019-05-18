@@ -11,6 +11,7 @@ Page({
     listArr:[],
     preFlag:true,
     flag:true,
+    showTitle: []
   },
 
   /**
@@ -22,7 +23,24 @@ Page({
     }
     console.log(options.title); 
     var val = options.title;
-    var that=this;
+    var that = this;
+    wx.request({
+      url: 'http://127.0.0.1:3000/showFinish',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        let arr = [];
+        for (var i = 0; i < res.data.length; i++) {
+          arr[i] = res.data[i].releaseTitle
+        }
+        // console.log(arr);
+        that.setData({
+          showTitle: arr
+        })
+        // console.log(that.data.showTitle);
+      }
+    })
     wx.request({
       url: 'http://127.0.0.1:3000/searchDetail',
       // +that.data.urlInterface,
@@ -38,7 +56,15 @@ Page({
         for (var key in res.data) {
           //console.log(typeof(res.data[key]));  //对象
           console.log(typeof (res.data[key].pic));
-          if (app.globalData.openId == res.data[key].openid) {
+          let arr2 = that.data.showTitle;
+          var finish = false;
+          for (var i = 0; i < arr2.length; i++) {
+            if (arr2[i] == res.data[key].title) {
+              finish = true;
+              break;
+            }
+          }
+          if (app.globalData.openId == res.data[key].openid||finish==true) {
             that.setData({
               preFlag: false
             })

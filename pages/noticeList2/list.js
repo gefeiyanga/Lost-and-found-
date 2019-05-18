@@ -74,6 +74,7 @@ Page({
     console.log(this.data.listArr[index].returnNickName); 
     console.log(this.data.listArr[index].returnTitle); 
     console.log(this.data.listArr[index].returnOpenId); 
+    console.log(this.data.listArr[index].releaseOpenId);
     wx.request({
       url: 'http://127.0.0.1:3000/rejectCommit',
       method:'POST',
