@@ -20,7 +20,7 @@
 <form>
 	<view class="cu-form-group margin-top">
 		<view class="title">标题</view>
-		<input maxlength="16" bindinput="getTitle" placeholder="给它取个标题吧"></input>
+		<input maxlength="16" value="{{titleValue}}" bindblur="setNoRepeat" placeholder="给它取个标题吧"></input>
 	</view>
 	<view class="cu-form-group">
     <view class="title">详情</view>

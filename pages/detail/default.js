@@ -38,8 +38,7 @@ Page({
         for (var key in res.data) {
           //console.log(typeof(res.data[key]));  //对象
           console.log(typeof (res.data[key].pic));
-          console.log(nickName, res.data[key].uname)
-          if (nickName == res.data[key].uname) {
+          if (app.globalData.openId == res.data[key].openid) {
             that.setData({
               preFlag: false
             })
@@ -71,13 +70,13 @@ Page({
   returnIt:function (){
     console.log(this.data.listArr[0].title);
     wx.navigateTo({
-      url: `../../pages/return/return?releaseTitle=${this.data.listArr[0].title}&releaseName=${this.data.listArr[0].uname}`,
+      url: `../../pages/return/return?releaseTitle=${this.data.listArr[0].title}&releaseOpenId=${this.data.listArr[0].openid}&releaseName=${this.data.listArr[0].uname}`,
     })
   },
   getbackReq: function () {
     console.log(this.data.listArr[0].title);
     wx.navigateTo({
-      url: `../../pages/getback-req/default?releaseTitle=${this.data.listArr[0].title}&releaseName=${this.data.listArr[0].uname}`,
+      url: `../../pages/getback-req/default?releaseTitle=${this.data.listArr[0].title}&releaseOpenId=${this.data.listArr[0].openid}&releaseName=${this.data.listArr[0].uname}`,
     })
   },
 

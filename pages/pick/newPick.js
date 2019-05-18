@@ -1,5 +1,7 @@
 var util = require('../../utils/util.js');
 const app=getApp();
+var arrTitle=[];
+var flag=false;
 Page({
 
   /**
@@ -14,6 +16,7 @@ Page({
     tempFilePaths:[],
     imgLists:[],
     source:[],
+    titleValue:'',
     title:'',
     detail:'',
     name:'',
@@ -29,6 +32,22 @@ Page({
     }
     console.log(this.data.nickName);
     console.log(this.data.avatarUrl);
+    wx.request({
+      url: 'http://127.0.0.1:3000/noRepeatTitle',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        let arr=res.data;
+        console.log(arr);
+        for(var i=0;i<arr.length;i++){
+          for(var j=0;j<arr[i].length;j++){
+            arrTitle[arrTitle.length]=arr[i][j].title;
+          }
+        }
+        console.log(arrTitle);
+      }
+    })
   },
   //上传照片
   getPic: function() {
@@ -60,10 +79,33 @@ Page({
       urls: that.data.imgLists
     });
   },
-  getTitle:function(e){
-    var val = e.detail.value;
-    // console.log(val);
-    if(val.search("手机")!=-1){
+  setNoRepeat:function(e){
+    console.log(e.detail.value);
+    for(var i=0;i<arrTitle.length;i++){
+      if (arrTitle[i] == e.detail.value) {
+        wx.showToast({
+          title: '标题已存在，请另起标题！',
+          icon: 'none',
+          duration: 2000
+        })
+        this.setData({
+          titleValue:''
+        })
+        console.log(i);
+        flag=true;
+        break;
+      }
+    }
+    if (flag==false){
+      console.log(e.detail.value);
+      var val = e.detail.value;
+    }else{
+      val = this.data.titleValue;
+      flag = false;
+    } 
+    console.log(val);
+    if (val.search("手机") != -1) {
+      console.log('超前了');
       this.setData({
         tab:'p_phone'
       })
@@ -198,42 +240,51 @@ Page({
   release:function(){
     var that = this;    
     console.log(that.data);
-    var time = util.formatTime(new Date())
-    //为页面中time赋值
-    that.setData({
-      time: time
-    })
-    //打印
-    console.log(time)
-    wx.request({
-      url: "http://127.0.0.1:3000/lRelease",
-      method: "POST",
-      data: {
-        tab:that.data.tab,
-        time:that.data.time,
-        nickName:that.data.nickName,
-        avatarUrl:that.data.avatarUrl,
-        source: that.data.source,
-        title: that.data.title,
-        detail: that.data.detail,
-        name: that.data.name,
-        tele: that.data.tele
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function (res) {
-        console.log(res.data);
-        wx.navigateBack({
-          delta: 0  //小程序关闭当前页面返回上一页面
-        })
-        wx.showToast({
-          title: '发布成功！',
-          // icon: 'success',
-          // duration: 2000
-        })
-      },
-    })
+    if(that.data.title==''){
+      wx.showToast({
+        title: '请起标题！',
+        icon: 'none',
+        duration: 2000
+      })
+    }else{
+      var time = util.formatTime(new Date())
+      //为页面中time赋值
+      that.setData({
+        time: time
+      })
+      //打印
+      console.log(time)
+      wx.request({
+        url: "http://127.0.0.1:3000/lRelease",
+        method: "POST",
+        data: {
+          openId:app.globalData.openId,
+          tab:that.data.tab,
+          time:that.data.time,
+          nickName:that.data.nickName,
+          avatarUrl:that.data.avatarUrl,
+          source: that.data.source,
+          title: that.data.title,
+          detail: that.data.detail,
+          name: that.data.name,
+          tele: that.data.tele
+        },
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        success: function (res) {
+          console.log(res.data);
+          wx.navigateBack({
+            delta: 0  //小程序关闭当前页面返回上一页面
+          })
+          wx.showToast({
+            title: '发布成功！',
+            // icon: 'success',
+            // duration: 2000
+          })
+        },
+      })
+    }
   },
   
   /**

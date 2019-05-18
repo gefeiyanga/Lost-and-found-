@@ -27,7 +27,7 @@ Page({
       url: 'http://127.0.0.1:3000/cancelReqDot',
       method: 'POST',
       data: {
-        releaseName: that.data.nickName
+        releaseOpenId: app.globalData.openId
       },
       header: { 'Content-Type': 'application/x-www-form-urlencoded' },
       success: (res) => {
@@ -47,12 +47,12 @@ Page({
         for (var key in res.data) {
           // console.log(res.data[key]);
           console.log(res.data[key].releaseName);
-          if (that.data.nickName == res.data[key].releaseName && res.data[key].isDeal==1) {
+          if (app.globalData.openId == res.data[key].releaseOpenId && res.data[key].isDeal==1) {
             arr[arr.length]=res.data[key]
           }
         }
         that.setData({
-          listArr: arr
+          listArr: arr.reverse()
         })
         console.log(that.data.listArr);
       }
@@ -62,9 +62,10 @@ Page({
     console.log(e.currentTarget.dataset.index);
     let index = e.currentTarget.dataset.index;
     console.log(this.data.listArr[index].releaseTitle);
+    console.log(this.data.listArr[index].returnOpenId);
     // console.log(this.data.listArr[index].title);
     wx.navigateTo({
-      url: `../../pages/return/return?releaseTitle=${this.data.listArr[index].releaseTitle}&releaseName=${this.data.listArr[index].returnNickName}`,
+      url: `../../pages/return/return?releaseTitle=${this.data.listArr[index].releaseTitle}&releaseOpenId=${this.data.listArr[index].returnOpenId}&releaseName=${this.data.listArr[index].returnNickName}&returnName=${this.data.listArr[index].releaseNickName}`,
     })
   },
   rejectIt: function(e){
@@ -72,10 +73,13 @@ Page({
     console.log(this.data.listArr[index].releaseTitle);
     console.log(this.data.listArr[index].returnNickName); 
     console.log(this.data.listArr[index].returnTitle); 
+    console.log(this.data.listArr[index].returnOpenId); 
     wx.request({
       url: 'http://127.0.0.1:3000/rejectCommit',
       method:'POST',
       data:{
+        returnOpenId: this.data.listArr[index].releaseOpenId,
+        releaseOpenId: this.data.listArr[index].returnOpenId,
         releaseTitle:this.data.listArr[index].releaseTitle,
         releaseName: this.data.listArr[index].returnNickName,
         returnTitle: this.data.listArr[index].returnTitle,

@@ -25,7 +25,7 @@ Page({
       url: 'http://127.0.0.1:3000/cancelReturnDot',
       method: 'POST',
       data: {
-        releaseName:that.data.nickName
+        releaseOpenId:app.globalData.openId
       },
       header: { 'Content-Type': 'application/x-www-form-urlencoded' },
       success: (res) => {
@@ -48,7 +48,7 @@ Page({
           // console.log('发帖者' + res.data[key].releaseName);
           // console.log('登录者'+that.data.nickName);
           console.log(res.data[key]);
-          if(that.data.nickName==res.data[key].releaseName){
+          if(app.globalData.openId==res.data[key].releaseOpenId){
             arr[arr.length] = res.data[key]
           }
         }

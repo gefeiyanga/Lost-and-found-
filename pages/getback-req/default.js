@@ -8,6 +8,7 @@ Page({
   data: {
     releaseTitle: '',
     releaseName: '',
+    releaseOpenId: '',
     returnNickName: '',
     returnAvatarUrl: '',
     returnTitle: '',
@@ -24,7 +25,8 @@ Page({
     console.log(options.releaseName);//发帖用户昵称
     this.setData({
       releaseTitle: options.releaseTitle,
-      releaseName: options.releaseName
+      releaseName: options.releaseName,
+      releaseOpenId: options.releaseOpenId
     })
     if (app.globalData.userInfo) {
       console.log(app.globalData.userInfo.avatarUrl);//登录用户头像
@@ -61,6 +63,8 @@ Page({
       url: "http://127.0.0.1:3000/getbackReqCommit",
       method: "POST",
       data: {
+        releaseOpenId:that.data.releaseOpenId,
+        returnOpenId:app.globalData.openId,
         releaseTitle: that.data.releaseTitle,
         releaseName: that.data.releaseName,
         returnNickName: that.data.returnNickName,

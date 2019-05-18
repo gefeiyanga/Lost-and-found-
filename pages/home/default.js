@@ -26,6 +26,8 @@ Page({
     this.loadInfo();
     var that = this;
     console.log(that);
+    console.log(app.globalData.openId);
+    console.log(app.globalData.userInfo);
     var nickName = app.globalData.userInfo.nickName;
     var that = this;
     wx.request({
@@ -36,8 +38,7 @@ Page({
       success: function (res) {
         for (var key in res.data) {
           console.log(res.data[key]);
-          if (res.data[key].releaseName == nickName) {
-            console.log(res.data[key].releaseName);
+          if (app.globalData.openId == res.data[key].releaseOpenId) {
             if (res.data[key].isUnreadReturn == 0) {
               app.globalData.dot1 = true;
               break;
@@ -54,8 +55,7 @@ Page({
       success: function (res) {
         for (var key in res.data) {
           console.log(res.data[key].releaseName);
-          if (res.data[key].releaseName == nickName) {
-            console.log(res.data[key].releaseName);
+          if (res.data[key].releaseOpenId == app.globalData.openId) {
             if (res.data[key].isUnreadReq == 0) {
               app.globalData.dot2=true;
               break;

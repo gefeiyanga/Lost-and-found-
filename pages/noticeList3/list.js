@@ -36,7 +36,7 @@ Page({
           // console.log('发帖者' + res.data[key].releaseName);
           // console.log('登录者'+that.data.nickName);
           console.log(res.data[key]);
-          if (that.data.nickName == res.data[key].returnNickName) {
+          if (app.globalData.openId == res.data[key].returnOpenId) {
             arr[arr.length] = res.data[key]
           }
         }

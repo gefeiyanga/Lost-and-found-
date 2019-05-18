@@ -77,7 +77,9 @@ Page({
             break;
           }
         }
-        if (nickName == that.data.listArr[index].uname||finish==true) {
+        console.log(app.globalData.openId);
+        console.log(that.data.listArr[index].openid);
+        if (app.globalData.openId==that.data.listArr[index].openid||finish==true) {
           that.setData({
             preFlag: false
           })
@@ -92,7 +94,7 @@ Page({
   returnIt: function(){
     console.log(this.data.listArr[this.data.index].title);
     wx.navigateTo({
-      url: `../../pages/return/return?releaseTitle=${this.data.listArr[this.data.index].title}&releaseName=${this.data.listArr[this.data.index].uname}`,
+      url: `../../pages/return/return?releaseTitle=${this.data.listArr[this.data.index].title}&releaseOpenId=${this.data.listArr[this.data.index].openid}&releaseName=${this.data.listArr[this.data.index].uname}`,
     })
   },
 

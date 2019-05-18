@@ -1,4 +1,6 @@
 //app.js
+var OPEN_ID='';
+var SESSION_KEY='';
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -10,6 +12,23 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.request({
+          //获取openid接口  
+          url: 'https://api.weixin.qq.com/sns/jscode2session',
+          data: {
+            appid: 'wx5ac049e92712d536',
+            secret: '21c9d177b0af39e0c9f073fd9cf1c939',
+            js_code: res.code,
+            grant_type: 'authorization_code'
+          },
+          method: 'GET',
+          success: res => {
+            console.log(res.data)
+            OPEN_ID = res.data.openid;//获取到的openid  
+            SESSION_KEY = res.data.session_key;//获取到session_key  
+            this.globalData.openId = OPEN_ID;
+          }
+        })
       }
     })
     // 获取用户信息
@@ -35,6 +54,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    openId:'',
     dot1: false,
     dot2: false,
     isShowDot: false
