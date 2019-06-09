@@ -6,10 +6,20 @@
   padding:5px 0;
   margin:20rpx 0 40rpx;
 }
+.found{
+  /* top:-50rpx;
+  right:80rpx; */
+  color:lightseagreen;
+  margin-top: 8rpx;
+  margin-left: 20rpx;
+  width: 100rpx;
+  height: 40rpx;
+}
 .suc{
   /* visibility: hidden; */
-  top:-50rpx;
-  left:660rpx;
+  /* top:-50rpx;
+  left:630rpx; */
+  margin-top: 8rpx;
   width: 40rpx;
   height: 40rpx;
 }

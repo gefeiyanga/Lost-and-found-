@@ -95,8 +95,10 @@
     "pages/noticeList1/list",
     "pages/getback-req/default",
     "pages/noticeList2/list",
+    "pages/modify/default",
     "pages/noticeList3/list",
-    "pages/picToDetail2/detail2"
+    "pages/picToDetail2/detail2",
+    "pages/modify2/default"
   ],
   "permission": {
     "scope.userLocation": {

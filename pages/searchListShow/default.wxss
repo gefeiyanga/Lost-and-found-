@@ -1,1 +1,1 @@
-@import '/pages/template/list-template.wxss'
+@import '/pages/template/list-template.wxss';

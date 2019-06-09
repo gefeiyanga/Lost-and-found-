@@ -242,41 +242,49 @@ Page({
       },
       header:{'content-type':'application/json'},
       success:function(res){
-        console.log(res.data);
-        console.log(typeof(res.data));  //对象
-        var titles = [];
-        console.log(that.data.showTitle);
-        let arr = that.data.showTitle;
-        for (var key in res.data) {
-          //console.log(typeof(res.data[key]));  //对象
-          res.data[key].show = false;
-          for (let i = 0; i < arr.length; i++) {
-            if (res.data[key].title == arr[i]) {
-              res.data[key].show = true;
-              console.log(res.data[key].title)
-              console.log(res.data[key].show);
+        if(res.data=="nothing"){
+          that.setData({
+            listArr:[]
+          })
+          console.log(that.data.listArr);
+        } else {
+          console.log(typeof (res.data));  //对象
+          var titles = [];
+          console.log(that.data.showTitle);
+          console.log(res.data);
+          let arr = that.data.showTitle;
+          for (var key in res.data) {
+            //console.log(typeof(res.data[key]));  //对象
+            res.data[key].show = false;
+            for (let i = 0; i < arr.length; i++) {
+              if (res.data[key].title == arr[i]) {
+                res.data[key].show = true;
+                console.log(res.data[key].title)
+                console.log(res.data[key].show);
+              }
             }
+            console.log(res.data[key].show);
+            console.log(typeof (res.data[key].pic));
+            titles[titles.length] = res.data[key].title;
+            var pics = res.data[key].pic.split(".jpg");
+            console.log("pics:" + pics);
+            for (var i = 0; i < pics.length; i++) {
+              pics[i] = pics[i] + '.jpg';
+            }
+            pics.pop();
+            console.log(pics);
+            res.data[key].pic = pics
+            // console.log(pics);
           }
-          console.log(res.data[key].show);
-          console.log(typeof(res.data[key].pic));
-          titles[titles.length]=res.data[key].title;
-          var pics = res.data[key].pic.split(".jpg");
-          console.log("pics:"+pics);
-          for (var i = 0; i < pics.length; i++) {
-            pics[i] = pics[i] + '.jpg';
-          }
-          pics.pop();
-          console.log(pics);
-          res.data[key].pic = pics
-          // console.log(pics);
+          titles.reverse();
+          console.log(titles);
+          that.setData({
+            listArr: res.data.reverse(),
+            titles
+          })
+          console.log(that.data.listArr);
         }
-        titles.reverse();
-        console.log(titles);
-        that.setData({
-          listArr: res.data.reverse(),
-          titles
-        })
-      }
+      },
     });
   },
   toDetail: function (e) {

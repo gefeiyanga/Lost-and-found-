@@ -1,0 +1,10 @@
+<!--pages/ad/default.wxml-->
+<!-- <cover-view>
+  <button>{{val}}</button>
+</cover-view>
+<image src="../../images/ad.jpg"></image> -->
+<view>
+  <button bindtap='goIn' class="cu-btn bg-grey sm">
+    {{val}}秒后进入
+  </button>
+</view>

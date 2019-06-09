@@ -62,23 +62,35 @@ Page({
   },
   toFinish:function(e){
     console.log(e.currentTarget.dataset.index);
-    let index = e.currentTarget.dataset.index;
-    console.log(this.data.listArr[index].releaseTitle);
-    let releaseTitle = this.data.listArr[index].releaseTitle;
-    wx.request({
-      url: 'http://127.0.0.1:3000/finish',
-      method: 'POST',
-      data: {
-        releaseTitle
-      },
-      header: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      success: (res) => {
-        wx.navigateBack({
-          delta: 0  //小程序关闭当前页面返回上一页面
-        })
-        wx.showToast({
-          title: '已完成',
-        })
+    var that=this;
+    wx.showModal({
+      title: '提示',
+      content: '确定收到失物了吗',
+      success(res) {
+        if (res.confirm) {
+          let index = e.currentTarget.dataset.index;
+          console.log(that.data.listArr[index].releaseTitle);
+          let releaseTitle = that.data.listArr[index].releaseTitle;
+          wx.request({
+            url: 'http://127.0.0.1:3000/finish',
+            method: 'POST',
+            data: {
+              releaseTitle,
+              releaseOpenId:app.globalData.openId
+            },
+            header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            success: (res) => {
+              wx.navigateBack({
+                delta: 0  //小程序关闭当前页面返回上一页面
+              })
+              wx.showToast({
+                title: '已完成',
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   },
@@ -89,6 +101,58 @@ Page({
     this.setData({
       activeName: event.detail
     });
+  },
+  ok: function (e) {
+    var that=this;
+    let index = e.currentTarget.dataset.index; 
+    let releaseTitle = that.data.listArr[index].releaseTitle;
+    wx.showModal({
+      title: '提示',
+      content: '确定此时此地吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'http://127.0.0.1:3000/ok',
+            method: 'POST',
+            data: {
+              releaseTitle,
+              releaseOpenId:app.globalData.openId
+            },
+            header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            success: (res) => {
+              wx.request({
+                url: "http://127.0.0.1:3000/modify",
+                method: "POST",
+                data: {
+                  returnOpenId: that.data.listArr[index].returnOpenId
+                },
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                success: function (res) {
+                  console.log("ok");
+                  wx.navigateBack({
+                    delta: 0  //小程序关闭当前页面返回上一页面
+                  })
+                  wx.showToast({
+                    title: 'ok',
+                  })
+                }
+              })
+            }
+          })
+        }else{
+          console.log("no ok");
+        }
+      }
+    })
+  },
+  modify: function (e) {
+    let index = e.currentTarget.dataset.index;
+    console.log(index)
+    wx.navigateTo({
+      url: `../../pages/modify/default?releaseTitle=${this.data.listArr[index].releaseTitle}&returnOpenId=${this.data.listArr[index].returnOpenId}`,
+    })
   },
   onReady: function () {
 

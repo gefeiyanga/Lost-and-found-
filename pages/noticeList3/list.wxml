@@ -1,18 +1,42 @@
 <!--pages/noticeList1/list.wxml-->
 <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
-  <block wx:for="{{listArr}}" wx:key="index">
-    <van-collapse-item title="{{listArr[index].returnTitle}}" name="{{index}}">
-      <view wx:if="{{listArr[index].isReject==0}}">
-        <van-panel title="归还时间" desc="{{listArr[index].returnTime}}">
-        </van-panel>
-        <van-panel title="归还地点" desc="{{listArr[index].returnAddr}}">
-        </van-panel>
-      </view>
-      <view wx:else>
-        <van-panel>
-          <view>您已拒绝了对方的申请！</view>
-        </van-panel>
-      </view>
+  <view wx:if="{{listArr.length==0}}">
+    <van-collapse-item title="无" name="{{index}}">
+      暂时没有已处理项目
     </van-collapse-item>
-  </block>
+  </view>
+  <view wx:else>
+    <block wx:for="{{listArr}}" wx:key="index">
+      <van-collapse-item title="{{listArr[index].returnTitle}}" name="{{index}}">
+        <view wx:if="{{listArr[index].isReject==0}}">
+          <van-panel title="归还时间" desc="{{listArr[index].returnTime}}">
+          </van-panel>
+          <van-panel title="归还地点" desc="{{listArr[index].returnAddr}}">
+          </van-panel>
+          <van-panel>
+            <view class='flex flex-wrap justify-around' wx:if="{{listArr[index].isFinish==0}}">
+              <block wx:if="{{listArr[index].isOk==1}}">
+                <button bindtap='ok' class="cu-btn bg-blue lg flex justify-around" disabled='true'>OK</button>
+                <button bindtap='modify' class="cu-btn bg-blue lg flex justify-around" disabled='true'>修改</button>
+              </block>
+              <block wx:else>
+                <button bindtap='ok' class="cu-btn bg-blue lg flex justify-around" data-index='{{index}}'>OK</button>
+                <button bindtap='modify' class="cu-btn bg-blue lg flex justify-around" data-index='{{index}}'>修改</button>
+              </block>
+            </view>
+            <view class='flex flex-wrap justify-around' wx:else>
+              <button bindtap='ok' class="cu-btn bg-blue lg flex justify-around"  disabled='true'>OK</button>
+              <button bindtap='modify' class="cu-btn bg-blue lg flex justify-around" disabled='true'>修改</button>
+            </view>
+            
+          </van-panel>
+        </view >
+        <view wx:else>
+          <van-panel>
+            <view>您已拒绝了对方的申请！</view>
+          </van-panel>
+        </view>
+      </van-collapse-item>
+    </block>
+  </view>
 </van-collapse>

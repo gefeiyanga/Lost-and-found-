@@ -8,13 +8,13 @@
     <view class="title">详情</view>
 		<textarea maxlength="128" bindinput="getDetail" placeholder="请尽可能详细描述该物品"></textarea>
 	</view>
+  <view class="cu-form-group">
+		<view class="title">电话</view>
+		<input bindblur="reg" value="{{teleValue}}" maxlength="11"></input>
+	</view>
 	<view class="cu-form-group">
 		<view class="title">姓名</view>
 		<input bindinput="getName" maxlength="6"></input>
-	</view>
-  <view class="cu-form-group">
-		<view class="title" bindblur="reg">电话</view>
-		<input bindinput="getTele" maxlength="11"></input>
 	</view>
 		<block wx:for='{{imgLists}}' wx:key="item">
       <image class='picSrc padding-xs justify-between' src="{{item}}"></image> 

@@ -17,6 +17,7 @@ Page({
     imgLists:[],
     source:[],
     titleValue:'',
+    teleValue:'',
     title:'',
     detail:'',
     name:'',
@@ -202,40 +203,62 @@ Page({
       name: val
     });
   }, 
-  getTele: function (e) {
-    var val = e.detail.value;
-    this.setData({
-      tele: val
-    });
+  reg: function (e) {
+    console.log(e.detail.value);
+    let tele = e.detail.value;
+    if (!(/^1[34578]\d{9}$/.test(tele))) {
+      wx.showToast({
+        title: '手机号不合法，请重新输入',
+        icon: 'none',
+        duration: 2000
+      })
+      this.setData({
+        teleValue: ''
+      })
+    } else {
+      this.setData({
+        tele: tele
+      })
+    }
   },
   uploadPic:function(){
     var that = this;
-    for (var i = 0; i < that.data.length; i++) {
-      wx.uploadFile({
-        url: 'http://127.0.0.1:3000/upload',
-        filePath: that.data.tempFilePaths[i],//临时路径
-        name: 'image',
-        formData: {
-        },
-        header: {
-          "content-type": "multipart/form-data"
-        },
-        success: function (res) {
-          var data = JSON.parse(res.data);
-          console.log(typeof (data.path));
-          that.setData({
-            source: that.data.source + data.path
+    wx.showModal({
+      title: '提示',
+      content: '确认上传吗？',
+      success(res) {
+        if (res.confirm) {
+          for (var i = 0; i < that.data.length; i++) {
+            wx.uploadFile({
+              url: 'http://127.0.0.1:3000/upload',
+              filePath: that.data.tempFilePaths[i],//临时路径
+              name: 'image',
+              formData: {
+              },
+              header: {
+                "content-type": "multipart/form-data"
+              },
+              success: function (res) {
+                var data = JSON.parse(res.data);
+                console.log(typeof (data.path));
+                that.setData({
+                  source: that.data.source + data.path
+                })
+              }
+            })
+          }
+          wx.showLoading({
+            title: '上传中',
           })
-        }
-      })
-    }
-    wx.showLoading({
-      title: '上传中',
-    })
 
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 2000) 
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 2000) 
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   },
   release:function(){
     var that = this;    
@@ -247,43 +270,54 @@ Page({
         duration: 2000
       })
     }else{
-      var time = util.formatTime(new Date())
-      //为页面中time赋值
-      that.setData({
-        time: time
+      wx.showModal({
+        title: '提示',
+        content: '确认发布吗？',
+        success(res) {
+          if (res.confirm) {
+            var time = util.formatTime(new Date())
+            //为页面中time赋值
+            that.setData({
+              time: time
+            })
+            //打印
+            console.log(time)
+            wx.request({
+              url: "http://127.0.0.1:3000/lRelease",
+              method: "POST",
+              data: {
+                openId: app.globalData.openId,
+                tab: that.data.tab,
+                time: that.data.time,
+                nickName: that.data.nickName,
+                avatarUrl: that.data.avatarUrl,
+                source: that.data.source,
+                title: that.data.title,
+                detail: that.data.detail,
+                name: that.data.name,
+                tele: that.data.tele
+              },
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              success: function (res) {
+                console.log(res.data);
+                wx.navigateBack({
+                  delta: 0  //小程序关闭当前页面返回上一页面
+                })
+                wx.showToast({
+                  title: '发布成功！',
+                  // icon: 'success',
+                  // duration: 2000
+                })
+              },
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
       })
-      //打印
-      console.log(time)
-      wx.request({
-        url: "http://127.0.0.1:3000/lRelease",
-        method: "POST",
-        data: {
-          openId:app.globalData.openId,
-          tab:that.data.tab,
-          time:that.data.time,
-          nickName:that.data.nickName,
-          avatarUrl:that.data.avatarUrl,
-          source: that.data.source,
-          title: that.data.title,
-          detail: that.data.detail,
-          name: that.data.name,
-          tele: that.data.tele
-        },
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        success: function (res) {
-          console.log(res.data);
-          wx.navigateBack({
-            delta: 0  //小程序关闭当前页面返回上一页面
-          })
-          wx.showToast({
-            title: '发布成功！',
-            // icon: 'success',
-            // duration: 2000
-          })
-        },
-      })
+      
     }
   },
   

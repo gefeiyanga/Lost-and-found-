@@ -62,11 +62,29 @@ Page({
             }
           }
         }
-        if (app.globalData.dot1 == true || app.globalData.dot2 == true){
-          app.globalData.isShowDot=true;
+      }
+    })
+
+    wx.request({
+      url: 'http://127.0.0.1:3000/returnDot',
+      method: 'GET',
+      data: {},
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        for (var key in res.data) {
+          console.log(res.data[key]);
+          if (app.globalData.openId == res.data[key].returnOpenId) {
+            if (res.data[key].isUnreadDeal == 0) {
+              app.globalData.dot3 = true;
+              break;
+            }
+          }
+        }
+        if (app.globalData.dot1 == true || app.globalData.dot2 == true || app.globalData.dot3 == true) {
+          app.globalData.isShowDot = true;
         }
         console.log();
-        if (app.globalData.isShowDot == true){
+        if (app.globalData.isShowDot == true) {
           wx.setTabBarBadge({
             index: 3,
             text: '...'

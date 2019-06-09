@@ -1,9 +1,19 @@
 <import src="/pages/template/list-template.wxml" />
-<block wx:for='{{listArr}}' wx:key='{{index}}'>
-  <!-- <block wx:for='{{listArr[index]}}' wx:key='{{index}}'> -->
-    <view catchtap='toDetail' data-index='{{index}}'>
-      <template is="listTemp" data='{{...item}}'></template>
+<view wx:if="{{listArr.length==0}}">
+  <view class="flex-sub text-center">
+      <view class="solid-bottom text-xl padding">
+        <text class="text-black text-bold">在这里什么都没有找到</text>
+      </view>
+      <view class="padding">要不换个姿势试试...</view>
     </view>
-  <!-- </block> -->
-</block>
+</view>
+<view wx:else>
+  <block wx:for='{{listArr}}' wx:key='{{index}}'>
+    <!-- <block wx:for='{{listArr[index]}}' wx:key='{{index}}'> -->
+      <view catchtap='toDetail' data-index='{{index}}'>
+        <template is="listTemp" data='{{...item}}'></template>
+      </view>
+    <!-- </block> -->
+  </block>
+</view>
 

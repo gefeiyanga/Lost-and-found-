@@ -57,6 +57,7 @@ App({
     openId:'',
     dot1: false,
     dot2: false,
+    dot3: false,
     isShowDot: false
   }
 })

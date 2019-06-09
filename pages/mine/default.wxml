@@ -8,6 +8,6 @@
     <navigator class="padding-xl flex justify-between radius shadow bg-white" open-type='navigate' url='../../pages/noticeList2/list'>申请列表<view class="{{dot2==true?'dot':''}}"></view></navigator>
   </view>
   <view>
-    <navigator class="padding-xl radius shadow bg-white" open-type='navigate' url='../../pages/noticeList3/list'>已处理</navigator>
+    <navigator class="padding-xl flex justify-between radius shadow bg-white" open-type='navigate' url='../../pages/noticeList3/list'>处理列表<view class="{{dot3==true?'dot':''}}"></view></navigator>
   </view>
 </view>

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText":"已处理",
+  "navigationBarTitleText":"处理列表",
   "usingComponents": {
     "van-panel": "../../lib/panel/index",
     "van-collapse": "../../lib/collapse/index",

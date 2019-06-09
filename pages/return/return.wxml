@@ -12,21 +12,44 @@
 		<input maxlength="16" bindinput="getReturnTitle"></input>
 	</view>
 	<view class="cu-form-group">
+		<view class="title">归还日期</view>
+		  <picker
+    mode="date"
+    value="{{date}}"
+    start="2019-05-01"
+    end="2019-12-31"
+    bindchange="bindDateChange"
+  >
+      <view class="picker">当前选择: {{date}}</view>
+    </picker>
+	</view>
+  <view class="cu-form-group">
 		<view class="title">归还时间</view>
-		<input bindinput="getReturnTime" maxlength="16"></input>
+		  <picker
+    mode="time"
+    value="{{time}}"
+    start="07:01"
+    end="21:01"
+    bindchange="bindTimeChange"
+  >
+    <view class="picker">当前选择: {{time}}</view>
+  </picker>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">归还地点</view>
 		<input bindinput="getReturnAddr" maxlength="16"></input>
 	</view>
+  <view class="cu-form-group">
+		<view class="title">联系方式</view>
+		<input bindblur='reg' value='{{teleValue}}' maxlength="11"></input>
+	</view>
 	<view class="cu-form-group">
 		<view class="title">您的姓名</view>
 		<input bindinput="getReturnName" maxlength="6"></input>
 	</view>
-  <view class="cu-form-group">
-		<view class="title">联系方式</view>
-		<input bindinput="getReturnTele" maxlength="11"></input>
-	</view><view class="padding flex flex-direction">
-    <button class="cu-btn bg-grey lg" catchtap='commit'>提交</button>
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-grey lg" catchtap='commit'>
+      提交
+    </button>
   </view>
 </form>

@@ -7,8 +7,15 @@
     <text>{{uname}}</text>
     <text class='date'>{{date}}</text>
   </view>
-  <text class="title">{{title}}</text>
-  <image class='suc' style="visibility:  {{ show? '' :  'hidden' }}" src="../../images/suc.png"></image>
+  <view class='flex justify-between'>
+    <view class="title">{{title}}</view>
+    <view class='flex justify-end'>
+      <view>
+        <image class='suc' style="visibility:  {{ show? '' :  'hidden' }}" src="../../images/suc.png"></image>
+      </view>
+      <view class="found" style="visibility:  {{ show? '' :  'hidden' }}"> 已找回</view>
+    </view>
+  </view>
   <view class='content'>
     <text class='detail'>{{detail}}</text>
   </view>

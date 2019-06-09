@@ -22,6 +22,18 @@ Page({
     }
     var that = this;
     wx.request({
+      url: 'http://127.0.0.1:3000/cancelDealDot',
+      method: 'POST',
+      data: {
+        returnOpenId: app.globalData.openId
+      },
+      header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      success: (res) => {
+        app.globalData.dot3 = false
+        // console.log(res.data);
+      }
+    })
+    wx.request({
       url: 'http://127.0.0.1:3000/returnNoticeList',
       method: 'GET',
       data: {},
@@ -53,7 +65,58 @@ Page({
       activeName: event.detail
     });
   },
-
+  ok: function (e) {
+    var that = this;
+    let index = e.currentTarget.dataset.index;
+    let releaseTitle = that.data.listArr[index].releaseTitle;
+    wx.showModal({
+      title: '提示',
+      content: '确定此时此地吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'http://127.0.0.1:3000/ok2',
+            method: 'POST',
+            data: {
+              releaseTitle,
+              returnOpenId:app.globalData.openId
+            },
+            header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            success: (res) => {
+              wx.request({
+                url: "http://127.0.0.1:3000/modify2",
+                method: "POST",
+                data: {
+                  releaseOpenId: that.data.listArr[index].releaseOpenId
+                },
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                success: function (res) {
+                  console.log("ok");
+                  wx.navigateBack({
+                    delta: 0  //小程序关闭当前页面返回上一页面
+                  })
+                  wx.showToast({
+                    title: 'ok',
+                  })
+                }
+              })
+            }
+          })
+        } else {
+          console.log("no ok");
+        }
+      }
+    })
+  },
+  modify:function(e){
+    let index = e.currentTarget.dataset.index;
+    console.log(index)
+    wx.navigateTo({
+      url: `../../pages/modify2/default?releaseTitle=${this.data.listArr[index].releaseTitle}&releaseOpenId=${this.data.listArr[index].releaseOpenId}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

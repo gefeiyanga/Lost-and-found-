@@ -75,44 +75,56 @@ Page({
     console.log(this.data.listArr[index].returnTitle); 
     console.log(this.data.listArr[index].returnOpenId); 
     console.log(this.data.listArr[index].releaseOpenId);
-    wx.request({
-      url: 'http://127.0.0.1:3000/rejectCommit',
-      method:'POST',
-      data:{
-        returnOpenId: this.data.listArr[index].releaseOpenId,
-        releaseOpenId: this.data.listArr[index].returnOpenId,
-        releaseTitle:this.data.listArr[index].releaseTitle,
-        releaseName: this.data.listArr[index].returnNickName,
-        returnTitle: this.data.listArr[index].returnTitle,
-        returnNickName: this.data.nickName,
-        returnAvatarUrl: this.data.avatarUrl,
-        isReject:1
-      },
-      header: { 'Content-Type':'application/x-www-form-urlencoded'},
-      success: (res)=> {
-        console.log('1111'+this.data.listArr[index].releaseTitle);
-        wx.request({
-          url: 'http://127.0.0.1:3000/setStatus',
-          method: 'POST',
-          data: {
-            releaseTitle: this.data.listArr[index].releaseTitle,
-          },
-          header: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          success:(res)=>{
-            console.log(res.data)
-          }
-        })
+    var that=this;
+    wx.showModal({
+      title: '提示',
+      content: '确认驳回吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'http://127.0.0.1:3000/rejectCommit',
+            method: 'POST',
+            data: {
+              returnOpenId: that.data.listArr[index].releaseOpenId,
+              releaseOpenId: that.data.listArr[index].returnOpenId,
+              releaseTitle: that.data.listArr[index].releaseTitle,
+              releaseName: that.data.listArr[index].returnNickName,
+              returnTitle: that.data.listArr[index].returnTitle,
+              returnNickName: that.data.nickName,
+              returnAvatarUrl: that.data.avatarUrl,
+              isReject: 1
+            },
+            header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            success: (res) => {
+              console.log('1111' + that.data.listArr[index].releaseTitle);
+              wx.request({
+                url: 'http://127.0.0.1:3000/setStatus',
+                method: 'POST',
+                data: {
+                  releaseTitle: that.data.listArr[index].releaseTitle,
+                  releaseOpenId:app.globalData.openId
+                },
+                header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                success: (res) => {
+                  console.log(res.data)
+                }
+              })
 
-        console.log(res.data);
-        wx.navigateBack({
-          delta: 0  //小程序关闭当前页面返回上一页面
-        })
-        wx.showToast({
-          title: '已驳回！',
-          // icon: 'success',
-          // duration: 2000
-        })
-      },
+              console.log(res.data);
+              wx.navigateBack({
+                delta: 0  //小程序关闭当前页面返回上一页面
+              })
+              wx.showToast({
+                title: '已驳回！',
+                // icon: 'success',
+                // duration: 2000
+              })
+            },
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
   onChange(event) {
